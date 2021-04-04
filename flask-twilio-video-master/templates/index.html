@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+    <body>
+        <h1 style="text-align: center;">Your Private Party</h1>
+        <form>
+            <label for="username">Name: </label>
+            <input type="text" name=”username” id="username">
+            <button id="join_leave">Join call</button>
+            <button onclick="NewTab()">Open Myntra</button>
+            <button id="share_screen" disabled>Share screen</button>
+            <button id="toggle_chat" disabled>Toggle chat</button>
+            
+        </form>
+        <p id="count">Disconnected.</p>
+        <div id="root">
+            <div id="container" class="container">
+                <div id="local" class="participant"><div></div><div class="label">Me</div></div>
+                <!-- more participants will be added dynamically here -->
+            </div>
+            <div id="chat">
+                <div id="chat-scroll">
+                    <div id="chat-content">
+                        <!-- chat content will be added dynamically here -->
+                    </div>
+                </div>
+                <input id="chat-input" type="text">
+            </div>
+        </div>
+        <div id="poll_here">
+            <form>
+                <label for="polling">Enter URL: </label>
+                <input type="text" name=”username” id="username">
+                <button id="start_poll">Start Poll</button>
+            </form>
+            <div id="choices">
+                <div class="choice">
+                  <div class="result">
+                    <div class="bar" data-choice="1"></div>
+                  </div>
+                  <div class="label">
+                    <button data-choice="1">Love it!</button>
+                  </div>
+                </div>
+                <div class="choice">
+                  <div class="result">
+                    <div class="bar" data-choice="2"></div>
+                  </div>
+                  <div class="label">
+                    <button data-choice="2">End my Pain</button>
+                  </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://media.twiliocdn.com/sdk/js/video/releases/2.3.0/twilio-video.min.js"></script>
+        <script src="https://media.twiliocdn.com/sdk/js/conversations/releases/1.0.0/twilio-conversations.min.js"></script>
+        <script src="{{ url_for('static', filename='app.js') }}"></script>
+        <script>
+            function NewTab() {
+                window.open(
+                  "https://www.myntra.com", "_blank");
+            }
+        </script>
+      
+    </body>
+</html>
