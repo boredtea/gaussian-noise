@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <h1 style="text-align: center">Your Private Party</h1>
+    <div id="addnew">
+      <input type="text" id="content" />
+      <input type="button" value="Join" id="submit" />
+    </div>
+    <!-- <script src="../static/choose.js"></script> -->
+    <script>
+      var submit = document.getElementById("submit");
+      submit.onclick = function () {
+        var data = document.getElementById("content").value;
+        fetch("/addRoom", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ content: data }),
+        })
+          //  console.log('hi')
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            window.location.pathname = '/'
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      };
+    </script>
+  </body>
+</html>

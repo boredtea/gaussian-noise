@@ -267,6 +267,7 @@ function vote(choice) {
   tally[choice]++;
   tally["total"]++;
   console.log(tally);
+  conv.sendMessage();
   addMessageToChat("Poll Bot","test msg")
 }
 
