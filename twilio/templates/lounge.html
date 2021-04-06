@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+    integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="../../public/css/style.css" />
+  <title>Public Lounge</title>
+</head>
+
+<body>
+  <div class="join-container">
+    <header class="join-header">
+      <h1><i class="fas fa-smile"></i> Lounge</h1>
+    </header>
+    <main class="join-main">
+      <!-- <form action="chat.html"> -->
+      <div class="form-control">
+        <label for="room">Room</label>
+        <div id="roomName" class="cc-selector">
+          <input id="Ethnic" type="radio" name="room" value="Ethnic" />
+          <label class="drinkcard-cc table" for="Ethnic"></label>
+          <input id="Formal" type="radio" name="room" value="Formal" />
+          <label class="drinkcard-cc table" for="Formal"></label>
+          <input id="Casual" type="radio" name="room" value="Casual" />
+          <label class="drinkcard-cc table" for="Casual"></label>
+          <input id="Sports" type="radio" name="room" value="Sports" />
+          <label class="drinkcard-cc table" for="Sports"></label>
+        </div>
+      </div>
+
+      <!-- <input type="text" id="content" /> -->
+      <input type="button" value="Join" id="submit" />
+
+      <!-- <button type="submit" class="btn">Join Chat</button> -->
+      <!-- </form> -->
+    </main>
+  </div>
+
+  <script>
+    var submit = document.getElementById("submit");
+    submit.onclick = function () {
+
+      var ele = document.getElementsByName('room');
+      var data = "NA"
+      for (i = 0; i < ele.length; i++) {
+        if (ele[i].checked)
+        data = ele[i].value
+      }
+
+      // var data = document.getElementById("content").value;
+      fetch("/addRoom", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ content: data }),
+      })
+        //  console.log('hi')
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          window.location.pathname = '/'
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+  </script>
+</body>
+
+</html>
