@@ -39,6 +39,10 @@ def index():
 def choose():
     return render_template('choose.html')
 
+@app.route('/choose1')
+def choose1():
+    return render_template('choose1.html')
+
 @app.route('/lounge')
 def lounge():
     return render_template('lounge.html')
