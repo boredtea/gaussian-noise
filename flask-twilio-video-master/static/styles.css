@@ -76,6 +76,10 @@ h1 {
     margin-top: 8px;
 }
 
+.realtime {
+    display: none;
+}
+
 /* chat section */
 
 #root.withChat #chat {
@@ -86,7 +90,7 @@ h1 {
     padding: 5px;
 }
 #root:not(withChat) #chat {
-    display: none;
+    display: block;
 }
 #chat #chat-scroll {
     overflow: auto;
