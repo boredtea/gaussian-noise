@@ -30,6 +30,11 @@ def get_chatroom(name):
     return twilio_client.conversations.conversations.create(
         friendly_name=name)
 
+# polling stuff
+poll_data = {
+#    'question' : 'Which web framework do you use?',
+   'fields'   : ['Yay', 'Nay']
+}
 
 @app.route('/')
 def index():
@@ -45,7 +50,30 @@ def lounge():
 
 @app.route('/party')
 def party():
-    return render_template('party.html')
+    return render_template('party.html', data=poll_data)
+
+filename = 'poll.txt'
+@app.route('/poll')
+def poll():
+    vote = request.args.get('field')
+
+    out = open(filename, 'a')
+    out.write( vote + '\n' )
+    out.close()
+    return vote 
+
+# @app.route('/results')
+def show_results():
+    votes = {}
+    for f in poll_data['fields']:
+        votes[f] = 0
+ 
+    f  = open(filename, 'r')
+    for line in f:
+        vote = line.rstrip("\n")
+        votes[vote] += 1
+ 
+    return render_template('results.html', data=poll_data, votes=votes)
 
 
 @app.route('/login', methods=['POST'])
@@ -85,9 +113,9 @@ def add_room():
 
 
 if __name__ == '__main__':
-    rooms = twilio_client.conversations.conversations.list()
+    # rooms = twilio_client.conversations.conversations.list()
 
-    for record in rooms:
-        print(record.friendly_name)
+    # for record in rooms:
+    #     print(record.friendly_name)
     app.run(host='0.0.0.0')
     

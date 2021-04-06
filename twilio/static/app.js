@@ -4,7 +4,8 @@ const button = document.getElementById("join_leave");
 const shareScreen = document.getElementById("share_screen");
 const toggleChat = document.getElementById("toggle_chat");
 const toggleMode = document.getElementById("toggle_mode");
-const poll = document.getElementById("poll_now");
+const pollDiv = document.getElementById("poll_here");
+const pollURL = document.getElementById("start_poll");
 const container = document.getElementById("container");
 const count = document.getElementById("count");
 const chatScroll = document.getElementById("chat-scroll");
@@ -79,6 +80,7 @@ function connect(username) {
         room.on("participantDisconnected", participantDisconnected);
         connected = true;
         toggleMode.disabled = false;
+        pollDiv.style.display = "block";
         updateParticipantCount();
         connectChat(data.token, data.conversation_sid);
         resolve();
@@ -159,6 +161,8 @@ function disconnect() {
     root.classList.remove("withChat");
   }
   toggleChat.disabled = true;
+  toggleMode.disabled = true;
+  pollDiv.style.display = "none";
   connected = false;
   updateParticipantCount();
 }
@@ -244,8 +248,6 @@ function connectChat(token, conversationSid) {
             addMessageToChat(messages.items[i].author, messages.items[i].body);
           }
           toggleChat.disabled = false;
-          //   root.classList.add("withChat");
-          //   chatScroll.scrollTop = chatScroll.scrollHeight;
         });
       });
     })
@@ -285,31 +287,24 @@ function toggleModeHandler() {
   }
 }
 
-// POLLING
-var buttons = document.querySelectorAll(".choice button"),
-  tally = {
-    1: 0,
-    2: 0,
-    total: 0,
-  };
-
-function vote(choice) {
-  tally[choice]++;
-  tally["total"]++;
-  console.log(tally);
-  conv.sendMessage();
-  addMessageToChat("Poll Bot", "test msg");
-}
-
-function setup() {
-  // Set up event listeners
-  for (var i = 0; i < buttons.length; i++) {
-    buttons[i].addEventListener("click", function (e) {
-      vote(e.target.dataset["choice"]);
-    });
+function polling() {
+  event.preventDefault();
+  endPoll = document.getElementById("end_poll");
+  poll_url = document.getElementById("polling").value;
+  if(poll_url != "")
+  {
+    document.getElementById("submit_url").style.display = "none";
+    document.getElementById("choices").style.display = "block";
+    document.getElementById('polling_url').innerHTML = "Yay or Nay?&nbsp;" + "<a href='" + poll_url + "' target = '_blank'>" + poll_url +"</a>";
+    endPoll.style.display = "block";
   }
+
+  endPoll.onclick = function () {
+    
+  }
+
 }
-//Polling code done
+
 
 addLocalVideo();
 button.addEventListener("click", connectButtonHandler);
@@ -317,4 +312,6 @@ shareScreen.addEventListener("click", shareScreenHandler);
 toggleChat.addEventListener("click", toggleChatHandler);
 toggleMode.addEventListener("click", toggleModeHandler);
 chatInput.addEventListener("keyup", onChatInputKey);
-setup(); //polling code
+pollURL.addEventListener("click", polling);
+
+
