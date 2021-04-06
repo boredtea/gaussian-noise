@@ -39,13 +39,13 @@ def index():
 def choose():
     return render_template('choose.html')
 
-@app.route('/choose1')
-def choose1():
-    return render_template('choose1.html')
-
 @app.route('/lounge')
 def lounge():
     return render_template('lounge.html')
+
+@app.route('/party')
+def party():
+    return render_template('party.html')
 
 
 @app.route('/login', methods=['POST'])
@@ -85,5 +85,9 @@ def add_room():
 
 
 if __name__ == '__main__':
+    rooms = twilio_client.conversations.conversations.list()
+
+    for record in rooms:
+        print(record.friendly_name)
     app.run(host='0.0.0.0')
     
