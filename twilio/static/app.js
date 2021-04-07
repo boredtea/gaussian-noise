@@ -4,7 +4,8 @@ const button = document.getElementById("join_leave");
 const shareScreen = document.getElementById("share_screen");
 const toggleChat = document.getElementById("toggle_chat");
 const toggleMode = document.getElementById("toggle_mode");
-const muteplis = document.getElementById("mute_me");
+const unmuteAudio = document.getElementById("unmute_audio");
+const showVideo = document.getElementById("show_video");
 const pollDiv = document.getElementById("poll_here");
 const pollURL = document.getElementById("start_poll");
 const container = document.getElementById("container");
@@ -81,8 +82,16 @@ function connect(username) {
         room.on("participantDisconnected", participantDisconnected);
         connected = true;
         toggleMode.disabled = false;
-        muteplis.disabled = false;
-        pollDiv.style.display = "flex";
+        unmuteAudio.disabled = false;
+        showVideo.disabled = false;
+        console.log("dying");
+        room.localParticipant.videoTracks.forEach((publication) => {
+          publication.track.disable();
+        });
+        room.localParticipant.audioTracks.forEach((publication) => {
+          publication.track.disable();
+        });
+        pollDiv.style.display = "block";
         updateParticipantCount();
         connectChat(data.token, data.conversation_sid);
         root.classList.add("withChat");
@@ -312,17 +321,53 @@ function toggleModeHandler() {
   }
 }
 
-function mute(){
+function unmute_audio() {
   event.preventDefault();
-  console.log("dying")
-  room.localParticipant.videoTracks.forEach(publication => {
-    publication.track.disable();
-    publication.unpublish();
+  room.localParticipant.audioTracks.forEach(publication => {
+    publication.track.enable();
   });
+}
+function show_video() {
+  event.preventDefault();
+  room.localParticipant.videoTracks.forEach(publication => {
+    publication.track.enable();
+  });
+}
+function mute_audio() {
+  event.preventDefault();
   room.localParticipant.audioTracks.forEach(publication => {
     publication.track.disable();
-    publication.unpublish();
   });
+}
+function hide_video() {
+  event.preventDefault();
+  room.localParticipant.videoTracks.forEach(publication => {
+    publication.track.disable();
+  });
+}
+
+function audioHandler() {
+  event.preventDefault();
+  if (unmuteAudio.innerHTML == "Unmute Audio") {
+    unmute_audio();
+    unmuteAudio.innerHTML == "Mute Audio";
+  }
+  else if(unmuteAudio.innerHTML == "Mute Audio") {
+    mute_audio();
+    unmuteAudio.innerHTML == "Unmute Audio";
+  }
+}
+
+function videoHandler() {
+  event.preventDefault();
+  if (showVideo.innerHTML == "Show Video") {
+    show_video();
+    showVideo.innerHTML == "Hide Video";
+  }
+  else if(showVideo.innerHTML == "Hide Video") {
+    hide_video();
+    showVideo.innerHTML == "Show Video"
+  }
 }
 
 function polling() {
@@ -350,6 +395,7 @@ button.addEventListener("click", connectButtonHandler);
 shareScreen.addEventListener("click", shareScreenHandler);
 toggleChat.addEventListener("click", toggleChatHandler);
 toggleMode.addEventListener("click", toggleModeHandler);
-muteplis.addEventListener("click", mute);
+unmuteAudio.addEventListener("click", audioHandler);
+showVideo.addEventListener("click", videoHandler);
 chatInput.addEventListener("keyup", onChatInputKey);
 pollURL.addEventListener("click", polling);
