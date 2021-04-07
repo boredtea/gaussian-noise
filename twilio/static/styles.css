@@ -118,10 +118,14 @@ h1 {
 }
 
 #chat-scroll{
-    padding-top: 27%;
+    padding-top: 25%;
 }
 
 #polling{
     margin-top: 5%;
-    margin-left: 2%;
+    margin-left: 40%;
+}
+
+#chat{
+    margin-left: 15%;
 }
