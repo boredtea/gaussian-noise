@@ -30,18 +30,14 @@
     </div>
 
     <div class="start_party">
-        <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
-            <li class="nav-item">
-                <a class="nav-link active" id="chat-tab" data-toggle="tab" href="#chat" role="tab" aria-controls="chat"
-                    aria-selected="true">Chat</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="poll-tab" data-toggle="tab" href="#poll" role="tab"
-                    aria-controls="poll" aria-selected="false">Poll</a>
-            </li>
-        </ul>
-        <div class="tab-content justify-content-center" id="myTabContent">
-            <div class="tab-pane fade show active" id="chat" role="tabpanel" aria-labelledby="chat-tab">
+        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <a class="nav-link active" id="v-pills-chat-tab" data-toggle="pill" href="#v-pills-chat" role="tab"
+                aria-controls="v-pills-chat" aria-selected="true">Chat</a>
+            <a class="nav-link" id="v-pills-poll-tab" data-toggle="pill" href="#v-pills-poll" role="tab"
+                aria-controls="v-pills-poll" aria-selected="false">Poll</a>
+        </div>
+        <div class="tab-content" id="v-pills-tabContent">
+            <div class="tab-pane fade show active" id="v-pills-chat" role="tabpanel" aria-labelledby="v-pills-chat-tab">
                 <div id="root">
                     <div id="container" class="realtime container">
                         <div id="local" class="participant">
@@ -60,7 +56,7 @@
                     </div>
                 </div>
             </div>
-            <div class="tab-pane fade" id="poll" role="tabpanel" aria-labelledby="poll-tab">
+            <div class="tab-pane fade" id="v-pills-poll" role="tabpanel" aria-labelledby="v-pills-poll-tab">
                 <div id="poll_here" style="display: none;">
                     <form id="submit_url">
                         <label for="polling">Enter URL: </label>
