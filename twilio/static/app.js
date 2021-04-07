@@ -81,6 +81,9 @@ function connect(username) {
         connected = true;
         toggleMode.disabled = false;
         pollDiv.style.display = "block";
+        root.classList.add("withChat");
+        chatScroll.scrollTop = chatScroll.scrollHeight;
+        document.getElementById("chat").style.visibility = "visible";
         updateParticipantCount();
         connectChat(data.token, data.conversation_sid);
         resolve();
@@ -159,6 +162,8 @@ function disconnect() {
   button.innerHTML = "Join call";
   if (root.classList.contains("withChat")) {
     root.classList.remove("withChat");
+    document.getElementById("chat").style.visibility = "hidden";
+
   }
   toggleChat.disabled = true;
   toggleMode.disabled = true;
@@ -265,9 +270,12 @@ function toggleChatHandler() {
   event.preventDefault();
   if (root.classList.contains("withChat")) {
     root.classList.remove("withChat");
+    document.getElementById("chat").style.visibility = "hidden";
   } else {
     root.classList.add("withChat");
     chatScroll.scrollTop = chatScroll.scrollHeight;
+    document.getElementById("chat").style.visibility = "visible";
+    
   }
 }
 
@@ -313,5 +321,3 @@ toggleChat.addEventListener("click", toggleChatHandler);
 toggleMode.addEventListener("click", toggleModeHandler);
 chatInput.addEventListener("keyup", onChatInputKey);
 pollURL.addEventListener("click", polling);
-
-
