@@ -312,12 +312,49 @@ function onChatInputKey(ev) {
   }
 }
 
+// Mute a singular HTML5 element
+function muteMe(elem) {
+  elem.muted = true;
+  elem.pause();
+}
+
+// Try to mute all video and audio elements on the page
+function mutePage() {
+  var elems = document.querySelectorAll("video, audio");
+
+  [].forEach.call(elems, function(elem) { muteMe(elem); });
+}
+
+// Unmute a singular HTML5 element
+function unmuteMe(elem) {
+  elem.muted = false;
+  elem.play();
+}
+
+// Try to unmute all video and audio elements on the page
+function unmmutePage() {
+  var elems = document.querySelectorAll("video, audio");
+
+  [].forEach.call(elems, function(elem) { unmuteMe(elem); });
+}
+
+
 function toggleModeHandler() {
   event.preventDefault();
   if (container.classList.contains("realtime")) {
     container.classList.remove("realtime");
+    toggleMode.innerHTML = "Relaxed Mode";
+    [...document.getElementsByClassName("realtime")].forEach((element) => {
+      element.style.display = "inline-block";
+    });
+    unmmutePage();
   } else {
+    [...document.getElementsByClassName("realtime")].forEach((element) => {
+      element.style.display = "none";
+    });
     container.classList.add("realtime");
+    toggleMode.innerHTML = "Go Live";
+    mutePage();
   }
 }
 
