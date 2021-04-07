@@ -96,13 +96,10 @@ function connect(username) {
         root.classList.add("withChat");
         chatScroll.scrollTop = chatScroll.scrollHeight;
         document.getElementById("chat").style.visibility = "visible";
-        document.getElementById("userLabel").style.display = "none";
         usernameInput.style.display = "none";
-        [...document.getElementsByClassName("start_party")].forEach(
-          (element) => {
-            element.style.display = "block";
-          }
-        );
+        document.getElementsByClassName("start_party")[0].style.display = "flex";
+        document.getElementsByClassName("start_party")[1].style.display = "block";
+
         resolve();
       })
       .catch((e) => {
@@ -188,7 +185,7 @@ function disconnect() {
   muteplis.disabled = true;
   pollDiv.style.display = "none";
   connected = false;
-  document.getElementById("userLabel").style.display = "inline-block";
+  // document.getElementById("userLabel").style.display = "inline-block";
   usernameInput.style.display = "inline-block";
   [...document.getElementsByClassName("start_party")].forEach((element) => {
     element.style.display = "none";
