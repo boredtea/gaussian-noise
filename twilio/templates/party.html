@@ -7,28 +7,26 @@
 </head>
 
 <body>
-    <h1 style="text-align: center;">{{ room }}</h1>
+    <h1 style="text-align: center; margin-top: 5px;">{{ room }}</h1><br>
 
     <form>
-        <div id="joining_details" style="display: flex; justify-content: center;" class="centered">
-            <label for="username" id="userLabel">
-                <h1 style="text-align: center">Username</h1>
-            </label>
-
-            <input type="text" class="form-control-lg" name="username" id="username" placeholder="Enter Username">
+        <div id="joining_details" style="display: flex; justify-content: center;">
+            <input type="text" class="form-control-lg" name="username" id="username" placeholder="Enter Username"
+                style="margin: 2px">
             <button id="join_leave" class="btn btn-warning">Join Call</button>
         </div>
-
         <div class="start_party">
-            <button onclick="NewTab()">Open Myntra</button>
-            <button id="share_screen" disabled>Share screen</button>
-            <button id="toggle_chat" disabled style="display: none;">Toggle chat</button>
-            <button id="toggle_mode" disabled>Toggle mode</button>
-            <button id="mute_me" disabled>Mute</button>
+            <button onclick="NewTab()" class="btn btn-warning mx-1">Open Myntra</button>
+            <button id="share_screen" class="btn btn-warning mx-1" disabled>Share screen</button>
+            <button id="toggle_chat" class="btn btn-warning mx-1" disabled style="display: none;">Toggle chat</button>
+            <button id="toggle_mode" class="btn btn-warning mx-1" disabled>Toggle mode</button>
+            <button id="mute_me" class="btn btn-warning mx-2 mx-1" disabled>Mute</button>
         </div>
 
     </form>
-    <p id="count">Disconnected.</p>
+    <div style="display: flex; justify-content: center; margin-top: 5px;">
+        <h5 id="count">Disconnected.</h5>
+    </div>
     <div class="start_party">
         <div id="root">
             <div id="container" class="realtime container">
