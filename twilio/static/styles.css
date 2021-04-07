@@ -90,7 +90,7 @@ h1 {
     padding: 5px;
 }
 #root:not(withChat) #chat {
-    display: block;
+    display: none;
 }
 #chat #chat-scroll {
     overflow: auto;
@@ -102,39 +102,6 @@ h1 {
     max-height: 1px;
 }
 
-/* Polling */
-.choice {
-    height: 400px;
-    display: inline-block;
-    width: 100px;
-  }
-  
-  .result {
-    height: 330px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-  }
-  
-  .bar {
-    height: 0%;
-    width: 70%;
-    margin: 0 auto;
-  }
-  
-  .bar[data-choice="1"] {
-    background-color: red;
-  }
-  
-  .bar[data-choice="2"] {
-    background-color: green;
-  }
-  
-  .bar[data-choice="3"] {
-    background-color: blue;
-  }
-  
-  .label {
-    height: 70px;
-    text-align: center;
-  }
+.start_party {
+  display: none;
+}

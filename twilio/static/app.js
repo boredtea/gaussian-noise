@@ -86,6 +86,11 @@ function connect(username) {
         root.classList.add("withChat");
         chatScroll.scrollTop = chatScroll.scrollHeight;
         document.getElementById("chat").style.visibility = "visible";
+        [...document.getElementsByClassName("start_party")].forEach(
+          (element) => {
+            element.style.display = "block";
+          }
+        );
         resolve();
       })
       .catch((e) => {
@@ -170,6 +175,9 @@ function disconnect() {
   toggleMode.disabled = true;
   pollDiv.style.display = "none";
   connected = false;
+  [...document.getElementsByClassName("start_party")].forEach((element) => {
+    element.style.display = "none";
+  });
   updateParticipantCount();
 }
 
