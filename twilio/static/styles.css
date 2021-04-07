@@ -116,3 +116,12 @@ h1 {
   transform: translate(-50%, -50%);
 
 }
+
+#chat-scroll{
+    padding-top: 27%;
+}
+
+#polling{
+    margin-top: 5%;
+    margin-left: 2%;
+}
