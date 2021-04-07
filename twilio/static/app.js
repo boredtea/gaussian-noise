@@ -4,7 +4,7 @@ const button = document.getElementById("join_leave");
 const shareScreen = document.getElementById("share_screen");
 const toggleChat = document.getElementById("toggle_chat");
 const toggleMode = document.getElementById("toggle_mode");
-const muteplis = document.getElementById("mute_me");
+const unmuteplis = document.getElementById("unmute_me");
 const pollDiv = document.getElementById("poll_here");
 const pollURL = document.getElementById("start_poll");
 const container = document.getElementById("container");
@@ -81,7 +81,15 @@ function connect(username) {
         room.on("participantDisconnected", participantDisconnected);
         connected = true;
         toggleMode.disabled = false;
-        muteplis.disabled = false;
+        unmuteplis.disabled = false;
+        console.log("dying");
+        room.localParticipant.videoTracks.forEach((publication) => {
+          publication.track.disable();
+          publication.unpublish();
+        });
+        room.localParticipant.audioTracks.forEach((publication) => {
+          publication.track.disable();
+        });
         pollDiv.style.display = "block";
         updateParticipantCount();
         connectChat(data.token, data.conversation_sid);
@@ -310,17 +318,17 @@ function toggleModeHandler() {
   }
 }
 
-function mute(){
+function unmute() {
   event.preventDefault();
-  console.log("dying")
-  room.localParticipant.videoTracks.forEach(publication => {
-    publication.track.disable();
-    publication.unpublish();
-  });
   room.localParticipant.audioTracks.forEach(publication => {
-    publication.track.disable();
-    publication.unpublish();
+    publication.track.enable();
   });
+  
+}
+
+function mute() {
+  event.preventDefault();
+  
 }
 
 function polling() {
