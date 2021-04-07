@@ -8,51 +8,55 @@
 <body>
     <h1 style="text-align: center;">Your Private Party</h1>
     <form>
-        <label for="username">Name: </label>
-        <input type="text" name=”username” id="username">
-        <button id="join_leave">Join call</button>
-        <button onclick="NewTab()">Open Myntra</button>
-        <button id="share_screen" disabled>Share screen</button>
-        <button id="toggle_chat" disabled style="display: none;">Toggle chat</button>
-        <button id="toggle_mode" disabled>Toggle mode</button>
+        <div id="joining_details">
+            <label for="username">Name: </label>
+            <input type="text" name=”username” id="username">
+            <button id="join_leave">Join Call</button>
+        </div>
 
+        <div class="start_party">
+            <button onclick="NewTab()">Open Myntra</button>
+            <button id="share_screen" disabled>Share screen</button>
+            <button id="toggle_chat" disabled style="display: none;">Toggle chat</button>
+            <button id="toggle_mode" disabled>Toggle mode</button>
+        </div>
 
     </form>
     <p id="count">Disconnected.</p>
-    <div id="root">
-        <div id="container" class="realtime container">
-            <div id="local" class="participant">
-                <div></div>
-                <div class="label">Me</div>
-            </div>
-            <!-- more participants will be added dynamically here -->
-        </div>
-        <div id="chat">
-            <div id="chat-scroll">
-                <div id="chat-content">
-                    <!-- chat content will be added dynamically here -->
+    <div class="start_party">
+        <div id="root">
+            <div id="container" class="realtime container">
+                <div id="local" class="participant">
+                    <div></div>
+                    <div class="label">Me</div>
                 </div>
+                <!-- more participants will be added dynamically here -->
             </div>
-            <input id="chat-input" type="text">
+            <div id="chat">
+                <div id="chat-scroll">
+                    <div id="chat-content">
+                        <!-- chat content will be added dynamically here -->
+                    </div>
+                </div>
+                <input id="chat-input" type="text">
+            </div>
         </div>
-    </div>
-    <div id="poll_here" style="display: none;">
-        <form id="submit_url">
-            <label for="polling">Enter URL: </label>
-            <input type="text" name="polling" id="polling" required>
-            <input type="submit" id="start_poll" value="Start Poll"/>
-        </form>
+        <div id="poll_here" style="display: none;">
+            <form id="submit_url">
+                <label for="polling">Enter URL: </label>
+                <input type="text" name="polling" id="polling" required>
+                <input type="submit" id="start_poll" value="Start Poll" />
+            </form>
 
-        <div id="polling_url"></div>
-        <form action="/poll" id="choices" style="display: none;">
-            {% for e in data.fields %}
-            <input type="submit" name="field" value="{{ e }}">
-            {% endfor %}
-            <!-- <input type="submit" value="Vote" /> -->
-        </form>
-        <button id="end_poll" style="display: none;">End Poll</button>
-        
-
+            <div id="polling_url"></div>
+            <form action="/poll" id="choices" style="display: none;">
+                {% for e in data.fields %}
+                <input type="submit" name="field" value="{{ e }}">
+                {% endfor %}
+                <!-- <input type="submit" value="Vote" /> -->
+            </form>
+            <button id="end_poll" style="display: none;">End Poll</button>
+        </div>
     </div>
 
     <script src="https://media.twiliocdn.com/sdk/js/video/releases/2.3.0/twilio-video.min.js"></script>

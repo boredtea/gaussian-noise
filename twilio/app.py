@@ -48,6 +48,10 @@ def choose():
 def lounge():
     return render_template('lounge.html')
 
+@app.route('/username')
+def username():
+    return render_template('username.html')
+
 @app.route('/party')
 def party():
     return render_template('party.html', data=poll_data)
