@@ -83,6 +83,9 @@ function connect(username) {
         pollDiv.style.display = "block";
         updateParticipantCount();
         connectChat(data.token, data.conversation_sid);
+        root.classList.add("withChat");
+        chatScroll.scrollTop = chatScroll.scrollHeight;
+        document.getElementById("chat").style.visibility = "visible";
         resolve();
       })
       .catch((e) => {
@@ -157,9 +160,12 @@ function disconnect() {
   while (container.lastChild.id != "local")
     container.removeChild(container.lastChild);
   button.innerHTML = "Join call";
-  if (root.classList.contains("withChat")) {
-    root.classList.remove("withChat");
-  }
+  // if (root.classList.contains("withChat")) {
+  //   root.classList.remove("withChat");
+  //   document.getElementById("chat").style.visibility = "hidden";
+  // }
+  root.classList.remove("withChat");
+  document.getElementById("chat").style.visibility = "hidden";
   toggleChat.disabled = true;
   toggleMode.disabled = true;
   pollDiv.style.display = "none";
@@ -265,9 +271,11 @@ function toggleChatHandler() {
   event.preventDefault();
   if (root.classList.contains("withChat")) {
     root.classList.remove("withChat");
+    document.getElementById("chat").style.visibility = "hidden";
   } else {
     root.classList.add("withChat");
     chatScroll.scrollTop = chatScroll.scrollHeight;
+    document.getElementById("chat").style.visibility = "visible";
   }
 }
 
@@ -291,20 +299,21 @@ function polling() {
   event.preventDefault();
   endPoll = document.getElementById("end_poll");
   poll_url = document.getElementById("polling").value;
-  if(poll_url != "")
-  {
+  if (poll_url != "") {
     document.getElementById("submit_url").style.display = "none";
     document.getElementById("choices").style.display = "block";
-    document.getElementById('polling_url').innerHTML = "Yay or Nay?&nbsp;" + "<a href='" + poll_url + "' target = '_blank'>" + poll_url +"</a>";
+    document.getElementById("polling_url").innerHTML =
+      "Yay or Nay?&nbsp;" +
+      "<a href='" +
+      poll_url +
+      "' target = '_blank'>" +
+      poll_url +
+      "</a>";
     endPoll.style.display = "block";
   }
 
-  endPoll.onclick = function () {
-    
-  }
-
+  endPoll.onclick = function () {};
 }
-
 
 addLocalVideo();
 button.addEventListener("click", connectButtonHandler);
@@ -313,5 +322,3 @@ toggleChat.addEventListener("click", toggleChatHandler);
 toggleMode.addEventListener("click", toggleModeHandler);
 chatInput.addEventListener("keyup", onChatInputKey);
 pollURL.addEventListener("click", polling);
-
-
