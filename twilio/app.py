@@ -66,12 +66,6 @@ def add_room():
     #return flask.redirect(url_for('login'))
     return flask.jsonify({'a':'b'})
 
-# polling stuff
-poll_data = {
-#    'question' : 'Which web framework do you use?',
-   'fields'   : ['Yay', 'Nay']
-}
-
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -87,6 +81,14 @@ def lounge():
 @app.route('/party')
 def party():
     return render_template('party.html', data=poll_data, room=room_name)
+
+# polling stuff
+poll_data = {
+#    'question' : 'Which web framework do you use?',
+   'fields'   : ['Yay', 'Nay']
+}
+
+votes = {}
 
 filename = 'poll.txt'
 @app.route('/poll')
@@ -105,14 +107,21 @@ def poll():
     for line in f:
         vote = line.rstrip("\n")
         votes[vote] += 1
- 
+
     return render_template('results.html', data=poll_data, votes=votes)
 
+@app.route('/endPoll', methods=['POST'])
+def endPoll():
+    print("data ",request.data)
+    global current_url
+    current_url = json.loads(request.data)["content"]
+    # clear the file
+    f = open(filename, 'w')
+    f.close()
+    finalVotes = votes.copy()
+    votes.clear()
+    return render_template('finalResults.html', data=poll_data, votes=finalVotes, pollURL=current_url)
 
 if __name__ == '__main__':
-    # rooms = twilio_client.conversations.conversations.list()
-
-    # for record in rooms:
-    #     print(record.friendly_name)
     app.run(host='0.0.0.0')
     

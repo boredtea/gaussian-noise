@@ -1,105 +1,106 @@
-html, body {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+html,
+body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 h1 {
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
 }
 #root:not(.withChat) {
-    display: block;
-    width: 100%;
-    height: 100%;
-    margin-top: 20px;
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin-top: 20px;
 }
 #root.withChat {
-    display: grid;
-    grid-template-columns: 75% 25%;
-    height: 100%;
-    margin-top: 20px;
+  display: grid;
+  grid-template-columns: 75% 25%;
+  height: 100%;
+  margin-top: 20px;
 }
 
 /* video section */
 
 .container {
-    width: calc(100% - 5px);
-    height: 100%;
-    padding-right: 5px;
-    display: flex;
-    flex-wrap: wrap;
-    align-content: flex-start;
+  width: calc(100% - 5px);
+  height: 100%;
+  padding-right: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
 }
 .participant {
-    margin-bottom: 10px;
-    margin-right: 5px;
-    display: grid;
-    grid-template-rows: auto 20px;
+  margin-bottom: 10px;
+  margin-right: 5px;
+  display: grid;
+  grid-template-rows: auto 20px;
 }
 .participant div {
-    text-align: center;
+  text-align: center;
 }
 .participant div video {
-    background-color: #eee;
-    border: 1px solid black;
+  background-color: #eee;
+  border: 1px solid black;
 }
 .participant div video:not(.trackZoomed) {
-    width: 240px;
-    height: 180px;
+  width: 240px;
+  height: 180px;
 }
 .participant .label {
-    background-color: #ddd;
-    padding: 2px;
+  background-color: #ddd;
+  padding: 2px;
 }
 .participantZoomed {
-    width: 100%;
-    height: calc(100% - 5px);
-    grid-template-rows: auto 30px;
+  width: 100%;
+  height: calc(100% - 5px);
+  grid-template-rows: auto 30px;
 }
 .participantHidden {
-    display: none;
+  display: none;
 }
 .trackZoomed {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 .participantZoomed div video:not(.trackZoomed) {
-    display: none;
+  display: none;
 }
 .participantHidden div video {
-    display: none;
+  display: none;
 }
 .participantHidden .label {
-    display: none;
+  display: none;
 }
 .participantZoomed .label {
-    margin-top: 8px;
+  margin-top: 8px;
 }
 
 .realtime {
-    display: none;
+  display: none;
 }
 
 /* chat section */
 
 #root.withChat #chat {
-    width: calc(100% - 10px);
-    display: grid;
-    grid-template-rows: auto 30px;
-    border-left: 1px solid black;
-    padding: 5px;
+  width: calc(100% - 10px);
+  display: grid;
+  grid-template-rows: auto 30px;
+  border-left: 1px solid black;
+  padding: 5px;
 }
 #root:not(withChat) #chat {
-    display: none;
+  display: none;
 }
 #chat #chat-scroll {
-    overflow: auto;
+  overflow: auto;
 }
 #chat #chat-content {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    line-height: 1em;
-    max-height: 1px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  line-height: 1em;
+  max-height: 1px;
 }
 
 .start_party {
@@ -114,18 +115,20 @@ h1 {
   left: 50%;
   /* bring your own prefixes */
   transform: translate(-50%, -50%);
-
 }
 
-#chat-scroll{
-    padding-top: 25%;
+#chat-scroll {
+  padding-top: 25%;
 }
 
-#polling{
-    margin-top: 5%;
-    margin-left: 42%;
+#poll_here {
+  margin-top: 5%;
+  /* margin-left: 42%; */
+  display: flex;
+  justify-content: center;
+  
 }
 
-#chat{
-    margin-left: 15%;
+#chat {
+  margin-left: 15%;
 }

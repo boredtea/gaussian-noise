@@ -82,13 +82,18 @@ function connect(username) {
         connected = true;
         toggleMode.disabled = false;
         muteplis.disabled = false;
-        pollDiv.style.display = "block";
+        pollDiv.style.display = "flex";
         updateParticipantCount();
         connectChat(data.token, data.conversation_sid);
         root.classList.add("withChat");
         chatScroll.scrollTop = chatScroll.scrollHeight;
         document.getElementById("chat").style.visibility = "visible";
         usernameInput.style.display = "none";
+        // [...document.getElementsByClassName("start_party")].forEach(
+        //   (element) => {
+        //     element.style.display = "block";
+        //   }
+        // );
         document.getElementsByClassName("start_party")[0].style.display = "flex";
         document.getElementsByClassName("start_party")[1].style.display = "block";
 
@@ -337,7 +342,7 @@ function polling() {
     endPoll.style.display = "block";
   }
 
-  endPoll.onclick = function () {};
+  // endPoll.onclick = function () {};
 }
 
 addLocalVideo();

@@ -32,9 +32,11 @@
     <div class="start_party">
         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
             <a class="nav-link active" id="v-pills-chat-tab" data-toggle="pill" href="#v-pills-chat" role="tab"
-                aria-controls="v-pills-chat" aria-selected="true" style="text-align: center; width: 25%; margin-left: auto; margin-right: auto;  margin-top: 50px;" >Chat</a>
+                aria-controls="v-pills-chat" aria-selected="true"
+                style="text-align: center; width: 25%; margin-left: auto; margin-right: auto;  margin-top: 50px;">Chat</a>
             <a class="nav-link" id="v-pills-poll-tab" data-toggle="pill" href="#v-pills-poll" role="tab"
-                aria-controls="v-pills-poll" aria-selected="false" style="text-align: center; width: 25%; margin-left: auto; margin-right: auto;  margin-top: 15px;"  >Poll</a>
+                aria-controls="v-pills-poll" aria-selected="false"
+                style="text-align: center; width: 25%; margin-left: auto; margin-right: auto;  margin-top: 15px;">Poll</a>
         </div>
         <div class="tab-content" id="v-pills-tabContent">
             <div class="tab-pane fade show active" id="v-pills-chat" role="tabpanel" aria-labelledby="v-pills-chat-tab">
@@ -66,50 +68,19 @@
                     </form>
 
                     <div id="polling_url"></div>
-                    <form action="/poll" id="choices" style="display: none;">
+                    <form action="/poll" id="choices" style="display: none;" target="_blank">
                         {% for e in data.fields %}
                         <input type="submit" name="field" value="{{ e }}">
                         {% endfor %}
                         <!-- <input type="submit" value="Vote" /> -->
                     </form>
-                    <button id="end_poll" style="display: none;">End Poll</button>
+                    <form action="/endPoll" target="_blank">
+                        <button type="submit" id="end_poll" style="display: none;">End Poll</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- <div class="start_party">
-        <div id="root">
-            <div id="container" class="realtime container">
-                <div id="local" class="participant">
-                    <div></div>
-                    <div class="label">Me</div>
-                </div>
-            </div>
-            <div id="chat">
-                <div id="chat-scroll">
-                    <div id="chat-content">
-                    </div>
-                </div>
-                <input id="chat-input" type="text">
-            </div>
-        </div>
-        <div id="poll_here" style="display: none;">
-            <form id="submit_url">
-                <label for="polling">Enter URL: </label>
-                <input type="text" name="polling" id="polling" required>
-                <input type="submit" id="start_poll" value="Start Poll" />
-            </form>
-
-            <div id="polling_url"></div>
-            <form action="/poll" id="choices" style="display: none;">
-                {% for e in data.fields %}
-                <input type="submit" name="field" value="{{ e }}">
-                {% endfor %}
-            </form>
-            <button id="end_poll" style="display: none;">End Poll</button>
-        </div>
-    </div> -->
 
     <script src="../static/js/jquery-3.5.1.min.js"></script>
     <script src="../static/js/bootstrap.min.js"></script>
@@ -125,6 +96,31 @@
             window.open(
                 "https://www.myntra.com", "_blank");
         }
+
+        var endPoll = document.getElementById("end_poll");
+        endPoll.onclick = function () {
+            document.getElementById("submit_url").style.display = "block";
+            document.getElementById("choices").style.display = "none";
+            document.getElementById("polling_url").innerHTML = "";
+            endPoll.style.display = "none";
+            console.log("hlo end poll");
+            var itemURL = document.getElementById("polling").value;
+            fetch("/endPoll", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ content: itemURL }),
+            })
+                .then((res) => res.json())
+                .then((itemURL) => {
+                    console.log(itemURL);
+                    // window.location.pathname = '/endPoll'
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        };
     </script>
 
 </body>
