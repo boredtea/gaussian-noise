@@ -4,6 +4,7 @@ const button = document.getElementById("join_leave");
 const shareScreen = document.getElementById("share_screen");
 const toggleChat = document.getElementById("toggle_chat");
 const toggleMode = document.getElementById("toggle_mode");
+const muteplis = document.getElementById("mute_me");
 const pollDiv = document.getElementById("poll_here");
 const pollURL = document.getElementById("start_poll");
 const container = document.getElementById("container");
@@ -80,6 +81,7 @@ function connect(username) {
         room.on("participantDisconnected", participantDisconnected);
         connected = true;
         toggleMode.disabled = false;
+        muteplis.disabled = false;
         pollDiv.style.display = "block";
         updateParticipantCount();
         connectChat(data.token, data.conversation_sid);
@@ -173,6 +175,7 @@ function disconnect() {
   document.getElementById("chat").style.visibility = "hidden";
   toggleChat.disabled = true;
   toggleMode.disabled = true;
+  muteplis.disabled = true;
   pollDiv.style.display = "none";
   connected = false;
   [...document.getElementsByClassName("start_party")].forEach((element) => {
@@ -303,6 +306,19 @@ function toggleModeHandler() {
   }
 }
 
+function mute(){
+  event.preventDefault();
+  console.log("dying")
+  room.localParticipant.videoTracks.forEach(publication => {
+    publication.track.disable();
+    publication.unpublish();
+  });
+  room.localParticipant.audioTracks.forEach(publication => {
+    publication.track.disable();
+    publication.unpublish();
+  });
+}
+
 function polling() {
   event.preventDefault();
   endPoll = document.getElementById("end_poll");
@@ -328,5 +344,6 @@ button.addEventListener("click", connectButtonHandler);
 shareScreen.addEventListener("click", shareScreenHandler);
 toggleChat.addEventListener("click", toggleChatHandler);
 toggleMode.addEventListener("click", toggleModeHandler);
+muteplis.addEventListener("click", mute);
 chatInput.addEventListener("keyup", onChatInputKey);
 pollURL.addEventListener("click", polling);
