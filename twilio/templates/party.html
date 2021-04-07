@@ -46,11 +46,13 @@
         <div id="polling_url"></div>
         <form action="/poll" id="choices" style="display: none;">
             {% for e in data.fields %}
-            <input type="radio" name="field" value="{{ e }}"> {{ e }}<br>
+            <input type="submit" name="field" value="{{ e }}">
             {% endfor %}
-            <input type="submit" value="Vote" />
+            <!-- <input type="submit" value="Vote" /> -->
         </form>
         <button id="end_poll" style="display: none;">End Poll</button>
+        
+
     </div>
 
     <script src="https://media.twiliocdn.com/sdk/js/video/releases/2.3.0/twilio-video.min.js"></script>
