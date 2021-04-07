@@ -91,7 +91,7 @@ function connect(username) {
         room.localParticipant.audioTracks.forEach((publication) => {
           publication.track.disable();
         });
-        pollDiv.style.display = "block";
+        pollDiv.style.display = "flex";
         updateParticipantCount();
         connectChat(data.token, data.conversation_sid);
         root.classList.add("withChat");
@@ -350,11 +350,11 @@ function audioHandler() {
   event.preventDefault();
   if (unmuteAudio.innerHTML == "Unmute Audio") {
     unmute_audio();
-    unmuteAudio.innerHTML == "Mute Audio";
+    unmuteAudio.innerHTML = "Mute Audio";
   }
   else if(unmuteAudio.innerHTML == "Mute Audio") {
     mute_audio();
-    unmuteAudio.innerHTML == "Unmute Audio";
+    unmuteAudio.innerHTML = "Unmute Audio";
   }
 }
 
@@ -362,11 +362,11 @@ function videoHandler() {
   event.preventDefault();
   if (showVideo.innerHTML == "Show Video") {
     show_video();
-    showVideo.innerHTML == "Hide Video";
+    showVideo.innerHTML = "Hide Video";
   }
   else if(showVideo.innerHTML == "Hide Video") {
     hide_video();
-    showVideo.innerHTML == "Show Video"
+    showVideo.innerHTML = "Show Video"
   }
 }
 
@@ -376,7 +376,7 @@ function polling() {
   poll_url = document.getElementById("polling").value;
   if (poll_url != "") {
     document.getElementById("submit_url").style.display = "none";
-    document.getElementById("choices").style.display = "block";
+    document.getElementById("choices").style.display = "flex";
     document.getElementById("polling_url").innerHTML =
       "Yay or Nay?&nbsp;" +
       "<a href='" +
@@ -384,7 +384,7 @@ function polling() {
       "' target = '_blank'>" +
       poll_url +
       "</a>";
-    endPoll.style.display = "block";
+    endPoll.style.display = "flex";
   }
 
   // endPoll.onclick = function () {};
