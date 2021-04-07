@@ -1,40 +1,54 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{{ url_for('static', filename='styles.css') }}"
-    />
-  </head>
-  <body>
-    <h1 style="text-align: center">Your Private Party</h1>
-    <div id="addnew">
-      <input type="text" id="content" />
-      <input type="button" value="Join" id="submit" />
-    </div>
 
-    <script>
-      var submit = document.getElementById("submit");
-      submit.onclick = function () {
-        var data = document.getElementById("content").value;
-        fetch("/addRoom", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ content: data }),
+<head>
+  <link rel="stylesheet" href="../static/css/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}" />
+  <style>
+    body {
+      background-color: #ecd8dd;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="centered">
+    <h1 style="text-align: center">Join Or Create Room</h1>
+    <br>
+    <br>
+
+    <div id="addnew" style="display: flex; justify-content: center;">
+      <input type="text" id="content" class="form-control-lg" placeholder="Enter Room Name" style="margin: 2px"/>
+      <input type="button" value="Go to Room" id="submit" class="btn btn-warning"/>
+    </div>
+  </div>
+
+  <script src="../static/js/jquery-3.5.1.min.js"></script>
+  <script src="../static/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script>
+    var submit = document.getElementById("submit");
+    submit.onclick = function () {
+      var data = document.getElementById("content").value;
+      fetch("/addRoom", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ content: data }),
+      })
+        //  console.log('hi')
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          window.location.pathname = '/party'
         })
-          //  console.log('hi')
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
-            window.location.pathname = '/party'
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      };
-    </script>
-  </body>
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+  </script>
+</body>
+
 </html>
