@@ -30,55 +30,6 @@ def get_chatroom(name):
     return twilio_client.conversations.conversations.create(
         friendly_name=name)
 
-# polling stuff
-poll_data = {
-#    'question' : 'Which web framework do you use?',
-   'fields'   : ['Yay', 'Nay']
-}
-
-@app.route('/')
-def index():
-    return render_template('index.html')
-
-@app.route('/choose')
-def choose():
-    return render_template('choose.html')
-
-@app.route('/lounge')
-def lounge():
-    return render_template('lounge.html')
-
-@app.route('/username')
-def username():
-    return render_template('username.html')
-
-@app.route('/party')
-def party():
-    return render_template('party.html', data=poll_data)
-
-filename = 'poll.txt'
-@app.route('/poll')
-def poll():
-    vote = request.args.get('field')
-
-    out = open(filename, 'a')
-    out.write( vote + '\n' )
-    out.close()
-    return vote 
-
-# @app.route('/results')
-def show_results():
-    votes = {}
-    for f in poll_data['fields']:
-        votes[f] = 0
- 
-    f  = open(filename, 'r')
-    for line in f:
-        vote = line.rstrip("\n")
-        votes[vote] += 1
- 
-    return render_template('results.html', data=poll_data, votes=votes)
-
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -114,6 +65,48 @@ def add_room():
     #return flask.redirect(url_for('index'))
     #return flask.redirect(url_for('login'))
     return flask.jsonify({'a':'b'})
+
+# polling stuff
+poll_data = {
+#    'question' : 'Which web framework do you use?',
+   'fields'   : ['Yay', 'Nay']
+}
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/choose')
+def choose():
+    return render_template('choose.html')
+
+@app.route('/lounge')
+def lounge():
+    return render_template('lounge.html')
+
+@app.route('/party')
+def party():
+    return render_template('party.html', data=poll_data, room=room_name)
+
+filename = 'poll.txt'
+@app.route('/poll')
+def poll():
+    vote = request.args.get('field')
+
+    out = open(filename, 'a')
+    out.write( vote + '\n' )
+    out.close()
+    # return vote 
+    votes = {}
+    for f in poll_data['fields']:
+        votes[f] = 0
+ 
+    f  = open(filename, 'r')
+    for line in f:
+        vote = line.rstrip("\n")
+        votes[vote] += 1
+ 
+    return render_template('results.html', data=poll_data, votes=votes)
 
 
 if __name__ == '__main__':
