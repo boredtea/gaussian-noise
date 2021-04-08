@@ -85,7 +85,7 @@ def party():
 # polling stuff
 poll_data = {
 #    'question' : 'Which web framework do you use?',
-   'fields'   : ['Yay', 'Nay']
+   'fields'   : ['Yay', 'Nay', 'End Poll']
 }
 
 votes = {}
@@ -100,30 +100,40 @@ def poll():
     out.close()
     # return vote 
     votes = {}
+    # choices = poll_data['fields']
+    # print(choices)
     for f in poll_data['fields']:
         votes[f] = 0
  
     f  = open(filename, 'r')
+    flag = 0
     for line in f:
-        vote = line.rstrip("\n")
-        votes[vote] += 1
+        if(line != "End Poll\n"):
+            vote = line.rstrip("\n")
+            votes[vote] += 1
+        else:
+            flag = 1
+            break
+    f.close()
+    if(flag == 1):
+        f = open(filename, 'w')
+        f.close()
 
-    # choices = get_template_attribute('party.html', 'hello')
 
     return render_template('results.html', data=poll_data, votes=votes)
     # return choices()
 
-@app.route('/endPoll', methods=['POST'])
-def endPoll():
-    print("data ",request.data)
-    global current_url
-    current_url = json.loads(request.data)["content"]
-    # clear the file
-    f = open(filename, 'w')
-    f.close()
-    finalVotes = votes.copy()
-    votes.clear()
-    return render_template('finalResults.html', data=poll_data, votes=finalVotes, pollURL=current_url)
+# @app.route('/endPoll', methods=['POST'])
+# def endPoll():
+#     print("data ",request.data)
+#     global current_url
+#     current_url = json.loads(request.data)["content"]
+#     # clear the file
+#     f = open(filename, 'w')
+#     f.close()
+#     finalVotes = votes.copy()
+#     votes.clear()
+#     return render_template('finalResults.html', data=poll_data, votes=finalVotes, pollURL=current_url)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
