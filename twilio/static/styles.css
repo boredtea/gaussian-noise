@@ -126,6 +126,7 @@ h1 {
   /* margin-left: 42%; */
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   
 }
 
