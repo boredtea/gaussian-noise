@@ -161,7 +161,6 @@ function participantConnected(participant) {
   participantDiv.setAttribute("class", "participant");
 
   let tracksDiv = document.createElement("div");
-  tracksDiv.setAttribute("class", "border rounded");
   participantDiv.appendChild(tracksDiv);
 
   let labelDiv = document.createElement("div");
