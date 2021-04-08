@@ -78,9 +78,9 @@
                             <!-- <input type="submit" value="Vote" /> -->
                         </div>
                     </form>
-                    <form action="/endPoll" target="_blank" style="display: flex; justify-content: center;">
+                    <!-- <form action="/endPoll" target="_blank" style="display: flex; justify-content: center;">
                         <button type="submit" class="btn btn-warning mx-1 my-1" id="end_poll">End Poll</button>
-                    </form>
+                    </form> -->
                 </div>
             </div>
         </div>
@@ -101,30 +101,30 @@
                 "https://www.myntra.com", "_blank");
         }
 
-        var endPoll = document.getElementById("end_poll");
-        endPoll.onclick = function () {
-            // document.getElementById("submit_url").style.display = "flex";
-            // document.getElementById("choices").style.display = "none";
-            // document.getElementById("polling_url").innerHTML = "";
-            // endPoll.style.display = "none";
-            console.log("hlo end poll");
-            var itemURL = document.getElementById("polling").value;
-            fetch("/endPoll", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ content: itemURL }),
-            })
-                .then((res) => res.json())
-                .then((itemURL) => {
-                    console.log(itemURL);
-                    // window.location.pathname = '/endPoll'
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
-        };
+        // var endPoll = document.getElementById("end_poll");
+        // endPoll.onclick = function () {
+        //     // document.getElementById("submit_url").style.display = "flex";
+        //     // document.getElementById("choices").style.display = "none";
+        //     // document.getElementById("polling_url").innerHTML = "";
+        //     // endPoll.style.display = "none";
+        //     console.log("hlo end poll");
+        //     var itemURL = document.getElementById("polling").value;
+        //     fetch("/endPoll", {
+        //         method: "POST",
+        //         headers: {
+        //             "Content-Type": "application/json",
+        //         },
+        //         body: JSON.stringify({ content: itemURL }),
+        //     })
+        //         .then((res) => res.json())
+        //         .then((itemURL) => {
+        //             console.log(itemURL);
+        //             // window.location.pathname = '/endPoll'
+        //         })
+        //         .catch((err) => {
+        //             console.log(err);
+        //         });
+        // };
     </script>
 
 </body>
