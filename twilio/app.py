@@ -108,7 +108,10 @@ def poll():
         vote = line.rstrip("\n")
         votes[vote] += 1
 
+    # choices = get_template_attribute('party.html', 'hello')
+
     return render_template('results.html', data=poll_data, votes=votes)
+    # return choices()
 
 @app.route('/endPoll', methods=['POST'])
 def endPoll():

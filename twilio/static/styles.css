@@ -122,11 +122,11 @@ h1 {
 }
 
 #poll_here {
-  margin-top: 5%;
+  margin-top: 2%;
   /* margin-left: 42%; */
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   
 }
 
