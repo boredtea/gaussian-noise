@@ -93,6 +93,7 @@ h1 {
   display: grid;
   grid-template-rows: auto 30px;
   /* border-left: 1px solid rgb(146, 146, 146); */
+  background-color: #d3dff0;
   padding: 5px;
 }
 #root:not(withChat) #chat {
@@ -106,6 +107,7 @@ h1 {
   margin-bottom: 10px;
   line-height: 1em;
   max-height: 1px;
+  font-family: 'Helvetica';
 }
 
 .start_party {
@@ -137,4 +139,5 @@ h1 {
 
 #chat {
   margin-left: 15%;
+  font-family: 'Helvetica';
 }
