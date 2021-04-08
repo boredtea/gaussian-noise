@@ -119,7 +119,7 @@ def poll():
         f = open(filename, 'w')
         f.close()
 
-
+    votes.pop('End Poll')
     return render_template('results.html', data=poll_data, votes=votes)
     # return choices()
 

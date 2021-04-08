@@ -5,15 +5,23 @@
   <title>Poll Results</title>
   <link rel="stylesheet" href="../static/css/bootstrap.min.css" type="text/css">
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}" />
+  <style>
+    body {
+      background-color: #ffec98;
+    }
+  </style>
 </head>
 
 <body>
-  <h1>Pollin Results</h1>
-  <ul>
-    {% for e in votes %}
-    <li>{{ e }} {{ votes[e] }}</li>
-    {% endfor %}
-  </ul>
+  <div class="centered">
+    <h1>Poll Results</h1>
+    
+      {% for e in votes %}
+      <h5 style="display: flex; justify-content: center;">{{ e }} {{ votes[e] }}</h5>
+      {% endfor %}
+    
+  </div>
+
 
   <script src="../static/js/jquery-3.5.1.min.js"></script>
   <script src="../static/js/bootstrap.min.js"></script>
