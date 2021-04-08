@@ -20,6 +20,12 @@ let conv;
 let screenTrack;
 let total_polls = 0;
 
+// if(button.innerHTML == "Leave")
+// {
+//   console.log("reload");
+//   button.onclick(setTimeout("location.reload(true);"));
+// }
+
 function addLocalVideo() {
   Twilio.Video.createLocalVideoTrack().then((track) => {
     let video = document.getElementById("local").firstChild;
@@ -28,6 +34,36 @@ function addLocalVideo() {
       zoomTrack(trackElement);
     });
     video.appendChild(trackElement);
+  });
+}
+
+// Mute a singular HTML5 element
+function muteMe(elem) {
+  elem.muted = true;
+  elem.pause();
+}
+
+// Try to mute all video and audio elements on the page
+function mutePage() {
+  var elems = document.querySelectorAll("video, audio");
+
+  [].forEach.call(elems, function (elem) {
+    muteMe(elem);
+  });
+}
+
+// Unmute a singular HTML5 element
+function unmuteMe(elem) {
+  elem.muted = false;
+  elem.play();
+}
+
+// Try to unmute all video and audio elements on the page
+function unmmutePage() {
+  var elems = document.querySelectorAll("video, audio");
+
+  [].forEach.call(elems, function (elem) {
+    unmuteMe(elem);
   });
 }
 
@@ -46,6 +82,7 @@ function connectButtonHandler(event) {
         button.innerHTML = "Leave call";
         button.disabled = false;
         shareScreen.disabled = false;
+        mutePage();
       })
       .catch(() => {
         alert("Connection failed. Is the backend running?");
@@ -98,14 +135,11 @@ function connect(username) {
         chatScroll.scrollTop = chatScroll.scrollHeight;
         document.getElementById("chat").style.visibility = "visible";
         usernameInput.style.display = "none";
-        // [...document.getElementsByClassName("start_party")].forEach(
-        //   (element) => {
-        //     element.style.display = "block";
-        //   }
-        // );
-        document.getElementsByClassName("start_party")[0].style.display = "flex";
-        document.getElementsByClassName("start_party")[1].style.display = "block";
-
+        document.getElementsByClassName("start_party")[0].style.display =
+          "flex";
+        document.getElementsByClassName("start_party")[1].style.display =
+          "block";
+        mutePage();
         resolve();
       })
       .catch((e) => {
@@ -180,15 +214,10 @@ function disconnect() {
   while (container.lastChild.id != "local")
     container.removeChild(container.lastChild);
   button.innerHTML = "Join call";
-  // if (root.classList.contains("withChat")) {
-  //   root.classList.remove("withChat");
-  //   document.getElementById("chat").style.visibility = "hidden";
-  // }
   root.classList.remove("withChat");
   document.getElementById("chat").style.visibility = "hidden";
   toggleChat.disabled = true;
   toggleMode.disabled = true;
-  muteplis.disabled = true;
   pollDiv.style.display = "none";
   connected = false;
   // document.getElementById("userLabel").style.display = "inline-block";
@@ -312,73 +341,29 @@ function onChatInputKey(ev) {
   }
 }
 
-// Mute a singular HTML5 element
-function muteMe(elem) {
-  elem.muted = true;
-  elem.pause();
-}
 
-// Try to mute all video and audio elements on the page
-function mutePage() {
-  var elems = document.querySelectorAll("video, audio");
-
-  [].forEach.call(elems, function(elem) { muteMe(elem); });
-}
-
-// Unmute a singular HTML5 element
-function unmuteMe(elem) {
-  elem.muted = false;
-  elem.play();
-}
-
-// Try to unmute all video and audio elements on the page
-function unmmutePage() {
-  var elems = document.querySelectorAll("video, audio");
-
-  [].forEach.call(elems, function(elem) { unmuteMe(elem); });
-}
-
-
-function toggleModeHandler() {
-  event.preventDefault();
-  if (container.classList.contains("realtime")) {
-    container.classList.remove("realtime");
-    toggleMode.innerHTML = "Relaxed Mode";
-    [...document.getElementsByClassName("realtime")].forEach((element) => {
-      element.style.display = "inline-block";
-    });
-    unmmutePage();
-  } else {
-    [...document.getElementsByClassName("realtime")].forEach((element) => {
-      element.style.display = "none";
-    });
-    container.classList.add("realtime");
-    toggleMode.innerHTML = "Go Live";
-    mutePage();
-  }
-}
 
 function unmute_audio() {
   event.preventDefault();
-  room.localParticipant.audioTracks.forEach(publication => {
+  room.localParticipant.audioTracks.forEach((publication) => {
     publication.track.enable();
   });
 }
 function show_video() {
   event.preventDefault();
-  room.localParticipant.videoTracks.forEach(publication => {
+  room.localParticipant.videoTracks.forEach((publication) => {
     publication.track.enable();
   });
 }
 function mute_audio() {
   event.preventDefault();
-  room.localParticipant.audioTracks.forEach(publication => {
+  room.localParticipant.audioTracks.forEach((publication) => {
     publication.track.disable();
   });
 }
 function hide_video() {
   event.preventDefault();
-  room.localParticipant.videoTracks.forEach(publication => {
+  room.localParticipant.videoTracks.forEach((publication) => {
     publication.track.disable();
   });
 }
@@ -388,8 +373,7 @@ function audioHandler() {
   if (unmuteAudio.innerHTML == "Unmute Audio") {
     unmute_audio();
     unmuteAudio.innerHTML = "Mute Audio";
-  }
-  else if(unmuteAudio.innerHTML == "Mute Audio") {
+  } else if (unmuteAudio.innerHTML == "Mute Audio") {
     mute_audio();
     unmuteAudio.innerHTML = "Unmute Audio";
   }
@@ -400,10 +384,52 @@ function videoHandler() {
   if (showVideo.innerHTML == "Show Video") {
     show_video();
     showVideo.innerHTML = "Hide Video";
-  }
-  else if(showVideo.innerHTML == "Hide Video") {
+  } else if (showVideo.innerHTML == "Hide Video") {
     hide_video();
-    showVideo.innerHTML = "Show Video"
+    showVideo.innerHTML = "Show Video";
+  }
+}
+
+function toggleModeHandler() {
+  event.preventDefault();
+  //mute yourself by default
+  if (unmuteAudio.innerHTML == "Mute Audio") {
+    mute_audio();
+    unmuteAudio.innerHTML = "Unmute Audio";
+  }
+  //switch off video by default
+  if (showVideo.innerHTML == "Hide Video") {
+    hide_video();
+    showVideo.innerHTML = "Show Video";
+  }
+  //stop screenshare by default
+  if (screenTrack) {
+    room.localParticipant.unpublishTrack(screenTrack);
+    screenTrack.stop();
+    screenTrack = null;
+    shareScreen.innerHTML = "Share screen";
+  }
+
+  if (container.classList.contains("realtime")) {
+    container.classList.remove("realtime");
+    //option to go back to relaxed mode
+    toggleMode.innerHTML = "Relaxed Mode";
+    //make all releavant buttons visible
+    [...document.getElementsByClassName("realtime")].forEach((element) => {
+      element.style.display = "inline-block";
+    });
+    //unmute all the page audio and video
+    unmmutePage();
+  } else {
+    //hide all releavant buttons
+    [...document.getElementsByClassName("realtime")].forEach((element) => {
+      element.style.display = "none";
+    });
+    container.classList.add("realtime");
+    //option to go live
+    toggleMode.innerHTML = "Go Live";
+    //mute all the page audio and video
+    mutePage();
   }
 }
 
