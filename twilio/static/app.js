@@ -444,6 +444,11 @@ function polling() {
   endPoll = document.getElementById("end_poll");
   poll_url = document.getElementById("polling").value;
   if (poll_url != "") {
+    chatInput.value = "Hey, let's start a poll on this: " + poll_url;
+    console.log("value added")
+    conv.sendMessage(chatInput.value);
+    console.log("before i die")
+    chatInput.value = "";
     // document.getElementById("submit_url").style.display = "none";
     // document.getElementById("choices").style.display = "flex";
     // document.getElementById("poll_choices").style.display = "flex";
@@ -485,5 +490,5 @@ toggleMode.addEventListener("click", toggleModeHandler);
 unmuteAudio.addEventListener("click", audioHandler);
 showVideo.addEventListener("click", videoHandler);
 chatInput.addEventListener("keyup", onChatInputKey);
-// pollURL.addEventListener("click", polling);
+pollURL.addEventListener("click", polling);
 wishlistURL.addEventListener("click", wishlist);
