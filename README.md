@@ -62,7 +62,7 @@ The following are the instructions to be followed while setting up the applicati
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone https://github.com/boredtea/gaussian-noise.git
    ```
 2. Switch to 'clean" branch
    ```sh
