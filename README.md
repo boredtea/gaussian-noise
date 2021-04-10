@@ -1,15 +1,4 @@
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Thanks again! Now go create something AMAZING! :D
--->
 
-
-
-<!-- PROJECT SHIELDS -->
-
-<!-- PROJECT LOGO -->
 <br />
 <p align="center">
   <h2 align="center">Myntra Hackerramp: Collaborative Shopping</h3>
@@ -37,7 +26,8 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This is a solution to the problem statement of "Collaborative Shopping" by Myntra. We have built a platform that allows you to communicate with friends, family and co-shoppers as you browse the products in Myntra's site. The platform offers two modes: relaxed and real-time. In relaxed mode, you can chat with the members in your group, poll on items, and add products to wishlist. In the real-time mode, you have the option to switch on your audio, video (and the option to turn them off as well), screenshare the Myntra site via the "Share screen" option, and chat as well! <br/><br/>
+This is a solution to the problem statement of "Collaborative Shopping" by Myntra. We have built a platform that allows you to communicate with friends, family and co-shoppers as you browse the products in Myntra's site. The platform offers two modes: relaxed and real-time. In relaxed mode, you can chat with the members in your group, poll on items, and add products to wishlist. In the real-time mode, you have the option to switch on your audio, video (and the option to turn them off as well), screenshare the Myntra site via the "Share screen" option, and chat as well! 
+<br/><br/>
 Members of the team:
 * Mansi Nanavati
 * Nandita LT
@@ -88,7 +78,6 @@ The following are the instructions to be followed while setting up the applicati
 
 
 
-<!-- USAGE EXAMPLES -->
 ## Demo
 
 (link)
