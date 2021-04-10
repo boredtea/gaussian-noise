@@ -8,6 +8,8 @@ const unmuteAudio = document.getElementById("unmute_audio");
 const showVideo = document.getElementById("show_video");
 const pollDiv = document.getElementById("poll_here");
 const pollURL = document.getElementById("start_poll");
+const wishlistDiv = document.getElementById("wishlist_section");
+const wishlistURL = document.getElementById("add_wishlist");
 const container = document.getElementById("container");
 const count = document.getElementById("count");
 const chatScroll = document.getElementById("chat-scroll");
@@ -95,6 +97,8 @@ function connectButtonHandler(event) {
     connected = false;
     shareScreen.innerHTML = "Share screen";
     shareScreen.disabled = true;
+    alert("Don't forget to save a copy of your wishlist before you leave!");
+
   }
 }
 
@@ -129,6 +133,8 @@ function connect(username) {
           publication.track.disable();
         });
         pollDiv.style.display = "block";
+        wishlistDiv.style.display = "block";
+
         updateParticipantCount();
         connectChat(data.token, data.conversation_sid);
         root.classList.add("withChat");
@@ -219,6 +225,8 @@ function disconnect() {
   toggleChat.disabled = true;
   toggleMode.disabled = true;
   pollDiv.style.display = "none";
+  wishlistDiv.style.display = "none";
+
   connected = false;
   // document.getElementById("userLabel").style.display = "inline-block";
   usernameInput.style.display = "inline-block";
@@ -341,8 +349,6 @@ function onChatInputKey(ev) {
   }
 }
 
-
-
 function unmute_audio() {
   event.preventDefault();
   room.localParticipant.audioTracks.forEach((publication) => {
@@ -438,20 +444,37 @@ function polling() {
   endPoll = document.getElementById("end_poll");
   poll_url = document.getElementById("polling").value;
   if (poll_url != "") {
-    document.getElementById("submit_url").style.display = "none";
-    document.getElementById("choices").style.display = "flex";
-    document.getElementById("poll_choices").style.display = "flex";
-    document.getElementById("polling_url").innerHTML =
-      "Yay or Nay?&nbsp;" +
-      "<a href='" +
-      poll_url +
-      "' target = '_blank'>" +
-      poll_url +
-      "</a>&nbsp;";
+    // document.getElementById("submit_url").style.display = "none";
+    // document.getElementById("choices").style.display = "flex";
+    // document.getElementById("poll_choices").style.display = "flex";
+    // document.getElementById("polling_url").innerHTML =
+    //   "Yay or Nay?&nbsp;" +
+    //   "<a href='" +
+    //   poll_url +
+    //   "' target = '_blank'>" +
+    //   poll_url +
+    //   "</a>&nbsp;";
     // endPoll.style.display = "flex";
   }
+}
 
-  // endPoll.onclick = function () {};
+function wishlist() {
+  event.preventDefault();
+  wishlist_url = document.getElementById("wishlist").value;
+  newItem = document.getElementById("wishlist_url");
+  if (wishlist_url != "") {
+    let wishlistItem = document.createElement("li");
+    wishlistItem.setAttribute("style", "display: flex; justify-content: center;")
+    wishlistItem.innerHTML =
+      "<a href='" +
+      wishlist_url +
+      "' target = '_blank'>" +
+      wishlist_url +
+      "</a>&nbsp;";
+
+    newItem.appendChild(wishlistItem);
+    document.getElementById("wishlist_link").reset();
+  }
 }
 
 addLocalVideo();
@@ -462,4 +485,5 @@ toggleMode.addEventListener("click", toggleModeHandler);
 unmuteAudio.addEventListener("click", audioHandler);
 showVideo.addEventListener("click", videoHandler);
 chatInput.addEventListener("keyup", onChatInputKey);
-pollURL.addEventListener("click", polling);
+// pollURL.addEventListener("click", polling);
+wishlistURL.addEventListener("click", wishlist);
