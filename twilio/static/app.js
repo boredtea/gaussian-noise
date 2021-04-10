@@ -438,15 +438,16 @@ function polling() {
   endPoll = document.getElementById("end_poll");
   poll_url = document.getElementById("polling").value;
   if (poll_url != "") {
-    // document.getElementById("submit_url").style.display = "none";
-    // document.getElementById("choices").style.display = "flex";
-    // document.getElementById("polling_url").innerHTML =
-    //   "Yay or Nay?&nbsp;" +
-    //   "<a href='" +
-    //   poll_url +
-    //   "' target = '_blank'>" +
-    //   poll_url +
-    //   "</a>&nbsp;";
+    document.getElementById("submit_url").style.display = "none";
+    document.getElementById("choices").style.display = "flex";
+    document.getElementById("poll_choices").style.display = "flex";
+    document.getElementById("polling_url").innerHTML =
+      "Yay or Nay?&nbsp;" +
+      "<a href='" +
+      poll_url +
+      "' target = '_blank'>" +
+      poll_url +
+      "</a>&nbsp;";
     // endPoll.style.display = "flex";
   }
 

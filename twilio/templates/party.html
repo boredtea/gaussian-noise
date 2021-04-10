@@ -63,20 +63,19 @@
             </div>
             <div class="tab-pane fade" id="v-pills-poll" role="tabpanel" aria-labelledby="v-pills-poll-tab">
                 <div id="poll_here" style="display: none;">
-                    <!-- <form id="submit_url" style="display: flex; justify-content: center;">
+                    <form id="submit_url" style="display: flex; justify-content: center;">
                         <input type="text" class="form-control-sm" placeholder="Item URL" name="polling" id="polling"
                             required>
                         <input type="submit" class="btn btn-warning" id="start_poll" value="Start Poll" />
-                    </form> -->
+                    </form>
 
-                    <!-- <div id="polling_url"></div> -->
+                    <div id="polling_url"></div>
                     <form action="/poll" id="choices" target="_blank">
-                        <h5 style="display: flex; justify-content: center;">Yay or Nay?</h5>
-                        <div style="display: flex; justify-content: center;">
+                        <h5 style="display: none; justify-content: center;">Yay or Nay?</h5>
+                        <div id="poll_choices" style="display: none; justify-content: center;">
                             {% for e in data.fields %}
                             <input type="submit" class="btn btn-secondary mx-1" name="field" value="{{ e }}">
                             {% endfor %}
-                            <!-- <input type="submit" value="Vote" /> -->
                         </div>
                     </form>
                     <!-- <form action="/endPoll" target="_blank" style="display: flex; justify-content: center;">
