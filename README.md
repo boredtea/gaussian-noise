@@ -1,4 +1,6 @@
+<!-- PROJECT SHIELDS -->
 
+<!-- PROJECT LOGO -->
 <br />
 <p align="center">
   <h2 align="center">Myntra Hackerramp: Collaborative Shopping</h3>
@@ -52,7 +54,11 @@ The following are the instructions to be followed while setting up the applicati
    ```sh
    git clone https://github.com/boredtea/gaussian-noise.git
    ```
-2. Switch to 'clean" branch
+3. Go to the required directory
+   ```sh
+   cd gaussian-noise\twilio
+   ```
+2. Switch to "clean" branch
    ```sh
    git checkout clean
    ```
@@ -62,10 +68,6 @@ The following are the instructions to be followed while setting up the applicati
     TWILIO_API_KEY_SID="SKc4256ea7429486bb5231eed6ddebc808"
     TWILIO_API_KEY_SECRET="9DgZ43zP6QxnOec2CMtguPy1QDYpBbTT"
     ```
-3. Go to the required directory
-   ```sh
-   cd gaussian-noise/twilio
-   ```
 4. Create and start a Python virtual environment
    ```sh
    python -m venv venv
@@ -75,9 +77,18 @@ The following are the instructions to be followed while setting up the applicati
    ```sh
    flask run
    ```
+   The application is now running on [http://localhost:5000/](http://localhost:5000/). Head over to localhost:5000 in your machine.
 
 
 
 ## Demo
-
-(link)
+1. Home page displaying Public and Private lounges<img src="images/index.png" alt="index"> 
+2. Rooms in public lounge<img src="images/lounge.png" alt="index"> 
+2. Enter username<img src="images/username.png" alt="index"> 
+2. Relaxed Mode<img src="images/relaxed.png" alt="index"> 
+2. Wishlist<img src="images/wishlist.png" alt="index"> 
+2. Save wishlist before leaving call<img src="images/save.png" alt="index"> 
+2. Live mode<img src="images/live.png" alt="index"> 
+2. Poll<img src="images/poll.png" alt="index"> 
+2. Poll results<img src="images/result.png" alt="index"> 
+2. Enter unique room name in private parties<img src="images/room.png" alt="index"> 
