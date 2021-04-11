@@ -58,10 +58,6 @@ The following are the instructions to be followed while setting up the applicati
    ```sh
    cd gaussian-noise\twilio
    ```
-2. Switch to "clean" branch
-   ```sh
-   git checkout clean
-   ```
 3. The application includes a file named .env.template which includes the three configuration variables needed. These are the private values of API. Make a copy of this file with the name .env (dot env) and edit it as follows:
     ```sh
     TWILIO_ACCOUNT_SID="AC18dcf40a5fc132449929e5e006e730a5"
