@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <title>Shopping Session</title>
     <link rel="stylesheet" href="../static/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
 </head>
@@ -38,6 +39,9 @@
             <a class="nav-link" id="v-pills-poll-tab" data-toggle="pill" href="#v-pills-poll" role="tab"
                 aria-controls="v-pills-poll" aria-selected="false"
                 style="text-align: center; width: 25%; margin-left: auto; margin-right: auto;  margin-top: 15px;">Poll</a>
+            <a class="nav-link" id="v-pills-wishlist-tab" data-toggle="pill" href="#v-pills-wishlist" role="tab"
+                aria-controls="v-pills-wishlist" aria-selected="false"
+                style="text-align: center; width: 25%; margin-left: auto; margin-right: auto;  margin-top: 15px;">Wishlist</a>
         </div>
         <div class="tab-content" id="v-pills-tabContent">
             <div class="tab-pane fade show active" id="v-pills-chat" role="tabpanel" aria-labelledby="v-pills-chat-tab">
@@ -62,25 +66,34 @@
             </div>
             <div class="tab-pane fade" id="v-pills-poll" role="tabpanel" aria-labelledby="v-pills-poll-tab">
                 <div id="poll_here" style="display: none;">
-                    <!-- <form id="submit_url" style="display: flex; justify-content: center;">
+                    <form id="submit_url" style="display: flex; justify-content: center;">
                         <input type="text" class="form-control-sm" placeholder="Item URL" name="polling" id="polling"
                             required>
                         <input type="submit" class="btn btn-warning" id="start_poll" value="Start Poll" />
-                    </form> -->
+                    </form>
 
                     <!-- <div id="polling_url"></div> -->
                     <form action="/poll" id="choices" target="_blank">
-                        <h5 style="display: flex; justify-content: center;">Yay or Nay?</h5>
-                        <div style="display: flex; justify-content: center;">
+                        <h5 style="display: none; justify-content: center;">Yay or Nay?</h5>
+                        <div id="poll_choices" style="display: flex; justify-content: center;">
                             {% for e in data.fields %}
                             <input type="submit" class="btn btn-secondary mx-1" name="field" value="{{ e }}">
                             {% endfor %}
-                            <!-- <input type="submit" value="Vote" /> -->
                         </div>
                     </form>
                     <!-- <form action="/endPoll" target="_blank" style="display: flex; justify-content: center;">
                         <button type="submit" class="btn btn-warning mx-1 my-1" id="end_poll">End Poll</button>
                     </form> -->
+                </div>
+            </div>
+            <div class="tab-pane fade" id="v-pills-wishlist" role="tabpanel" aria-labelledby="v-pills-wishlist-tab">
+                <div id="wishlist_section" style="display: none;">
+                    <form id="wishlist_link" style="display: flex; justify-content: center;">
+                        <input type="text" class="form-control-sm" placeholder="Wishlist URL" name="wishlist"
+                            id="wishlist" required>
+                        <input type="submit" class="btn btn-warning" id="add_wishlist" value="Add to Wishlist" />
+                    </form>
+                    <ul id="wishlist_url"></ul>
                 </div>
             </div>
         </div>
