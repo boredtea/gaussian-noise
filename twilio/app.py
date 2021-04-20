@@ -60,7 +60,8 @@ def login():
 def add_room():
     print("data ",request.data)
     global room_name
-    room_name = json.loads(request.data)["content"]
+    room_name = json.loads(request.data.decode('utf-8'))["content"]
+    # room_name = json.loads(request.data)["content"]
     print(room_name)
     #return flask.redirect(url_for('index'))
     #return flask.redirect(url_for('login'))
