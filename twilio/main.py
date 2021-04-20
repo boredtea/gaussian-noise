@@ -136,6 +136,6 @@ def poll():
 #     votes.clear()
 #     return render_template('finalResults.html', data=poll_data, votes=finalVotes, pollURL=current_url)
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+# if __name__ == '__main__':
+#     app.run(host='0.0.0.0')
     
