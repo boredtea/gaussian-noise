@@ -69,6 +69,19 @@ function unmmutePage() {
   });
 }
 
+function add_members() {
+  console.log("hellloooooo");
+  all_users = room.participants.each({ status: 'connected' }, (participant) => {
+    console.log(participant.sid);
+  });
+
+  all_users.forEach((participant) => {
+    user = document.createElement("option");
+    user.innerText = participant.sid;
+    document.getElementById("select_user").appendChild(user);
+  })
+}
+
 function connectButtonHandler(event) {
   event.preventDefault();
   if (!connected) {
@@ -126,6 +139,7 @@ function connect(username) {
         unmuteAudio.disabled = false;
         showVideo.disabled = false;
         console.log("dying");
+        console.log(room.participants);
         room.localParticipant.videoTracks.forEach((publication) => {
           publication.track.disable();
         });
@@ -162,6 +176,7 @@ function updateParticipantCount() {
 }
 
 function participantConnected(participant) {
+  console.log("Am i connecting?");
   let participantDiv = document.createElement("div");
   participantDiv.setAttribute("id", participant.sid);
   participantDiv.setAttribute("class", "participant");
@@ -183,7 +198,7 @@ function participantConnected(participant) {
     trackSubscribed(tracksDiv, track)
   );
   participant.on("trackUnsubscribed", trackUnsubscribed);
-
+  add_members();
   updateParticipantCount();
 }
 
@@ -449,17 +464,19 @@ function polling() {
     conv.sendMessage(chatInput.value);
     console.log("before i die")
     chatInput.value = "";
-    // document.getElementById("submit_url").style.display = "none";
-    // document.getElementById("choices").style.display = "flex";
-    // document.getElementById("poll_choices").style.display = "flex";
-    // document.getElementById("polling_url").innerHTML =
-    //   "Yay or Nay?&nbsp;" +
-    //   "<a href='" +
-    //   poll_url +
-    //   "' target = '_blank'>" +
-    //   poll_url +
-    //   "</a>&nbsp;";
-    // endPoll.style.display = "flex";
+  }
+}
+
+function suggestions() {
+  event.preventDefault();
+
+  suggest_url = document.getElementById("suggesting").value;
+  if (suggest_url != "") {
+    chatInput.value = "Hey, let's start a poll on this: " + suggest_url;
+    console.log("value added")
+    conv.sendMessage(chatInput.value);
+    console.log("before i die")
+    chatInput.value = "";
   }
 }
 
