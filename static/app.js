@@ -16,6 +16,7 @@ const chatScroll = document.getElementById("chat-scroll");
 const chatContent = document.getElementById("chat-content");
 const chatInput = document.getElementById("chat-input");
 const suggest = document.getElementById("send_suggestion");
+const suggestPill = document.getElementById("v-pills-poll");
 let connected = false;
 let room;
 let chat;
@@ -70,18 +71,14 @@ function unmmutePage() {
   });
 }
 
-function add_members() {
-  console.log("hellloooooo");
-  all_users = room.participants.each({ status: 'connected' }, (participant) => {
-    console.log(participant.sid);
-  });
-  print(all_users);
-  all_users.forEach((participant) => {
-    user = document.createElement("option");
-    user.innerText = participant.sid;
-    document.getElementById("select_user").appendChild(user);
-  })
-}
+// function selectUser() {
+//   //Getting Value
+//   //var selValue = document.getElementById("singleSelectDD").value;
+//   var selObj = document.getElementById("select_user");
+//   var selValue = selObj.options[selObj.selectedIndex].value;
+//   //Setting Value
+//   document.getElementById("textFieldValueJS").value = selValue;
+// }
 
 function connectButtonHandler(event) {
   event.preventDefault();
@@ -140,7 +137,7 @@ function connect(username) {
         unmuteAudio.disabled = false;
         showVideo.disabled = false;
         console.log("dying");
-        console.log(room.participants);
+        // console.log(room.participants.list(status='connected'));
         room.localParticipant.videoTracks.forEach((publication) => {
           publication.track.disable();
         });
@@ -199,7 +196,7 @@ function participantConnected(participant) {
     trackSubscribed(tracksDiv, track)
   );
   participant.on("trackUnsubscribed", trackUnsubscribed);
-  add_members();
+  // add_members();
   updateParticipantCount();
 }
 
@@ -470,10 +467,32 @@ function polling() {
   }
 }
 
+function add_members() {
+  event.preventDefault();
+  console.log("hellloooooo");
+  // all_users = room.participants.each({ status: 'connected' }, (participant) => {
+  //   console.log(participant.sid);
+  // });
+  all_users = room.participants;
+  // print(all_users);
+  userList = document.getElementById("select_user")
+  all_users.forEach((participant) => {
+    user = document.createElement("option");
+    user.innerText = participant.identity;
+    if (userList.childNodes.forEach((element) => {
+      element.get
+    })) {
+      userList.appendChild(user);
+    }
+    // userList.appendChild(user);
+  })
+}
+
 function suggestion() {
   event.preventDefault();
   suggest_url = document.getElementById("suggesting").value;
-  user_name = document.getElementById("friend_name").value;
+  var selObj = document.getElementById("select_user");
+  user_name = selObj.options[selObj.selectedIndex].value;
   if (suggest_url != "" && user_name != "") {
     chatInput.value = "@" + user_name + " try this: " + suggest_url;
     console.log("value added")
@@ -481,7 +500,7 @@ function suggestion() {
     console.log("before i die")
     chatInput.value = "";
     document.getElementById("suggest_url").reset();
-
+    [...document.getElementById("select_user").childNodes].forEach(el => el.remove());
   }
 }
 
@@ -513,5 +532,6 @@ unmuteAudio.addEventListener("click", audioHandler);
 showVideo.addEventListener("click", videoHandler);
 chatInput.addEventListener("keyup", onChatInputKey);
 pollURL.addEventListener("click", polling);
+suggestPill.addEventListener("click", add_members);
 suggest.addEventListener("click", suggestion);
 wishlistURL.addEventListener("click", wishlist);
