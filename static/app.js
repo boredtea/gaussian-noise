@@ -15,6 +15,7 @@ const count = document.getElementById("count");
 const chatScroll = document.getElementById("chat-scroll");
 const chatContent = document.getElementById("chat-content");
 const chatInput = document.getElementById("chat-input");
+const suggest = document.getElementById("send_suggestion");
 let connected = false;
 let room;
 let chat;
@@ -467,12 +468,11 @@ function polling() {
   }
 }
 
-function suggestions() {
+function suggestion() {
   event.preventDefault();
-
   suggest_url = document.getElementById("suggesting").value;
   if (suggest_url != "") {
-    chatInput.value = "Hey, let's start a poll on this: " + suggest_url;
+    chatInput.value = "I would suggest this item: " + suggest_url;
     console.log("value added")
     conv.sendMessage(chatInput.value);
     console.log("before i die")
@@ -508,4 +508,5 @@ unmuteAudio.addEventListener("click", audioHandler);
 showVideo.addEventListener("click", videoHandler);
 chatInput.addEventListener("keyup", onChatInputKey);
 pollURL.addEventListener("click", polling);
+suggest.addEventListener("click", suggestion);
 wishlistURL.addEventListener("click", wishlist);
