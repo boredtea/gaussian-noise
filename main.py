@@ -95,14 +95,12 @@ filename = 'poll.txt'
 @app.route('/poll')
 def poll():
     vote = request.args.get('field')
+    check = vote
 
     out = open(filename, 'a')
     out.write( vote + '\n' )
     out.close()
-    # return vote 
     votes = {}
-    # choices = poll_data['fields']
-    # print(choices)
     for f in poll_data['fields']:
         votes[f] = 0
  
@@ -121,7 +119,12 @@ def poll():
         f.close()
 
     votes.pop('End Poll')
-    return render_template('results.html', data=poll_data, votes=votes)
+    print(check)
+    if(check == "End Poll"):
+        return render_template('results.html', data=poll_data, votes=votes)
+    # else:
+    #     return flask.jsonify({'a':'b'})
+
     # return choices()
 
 # @app.route('/endPoll', methods=['POST'])

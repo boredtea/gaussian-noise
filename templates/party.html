@@ -82,15 +82,17 @@
                         </div>
                     </form>
 
-                    <div id="suggestion_section">
-                        <div class="form-group" style="display: flex; justify-content: center;">
+                    <div id="suggestion_section" style="margin-top: 2%">
+                        <!-- <div class="form-group" style="display: flex; justify-content: center;">
                             <label for="select_user"></label>
                             <select class="form-control" id="select_user">
                                 <option>Select User</option>
                             </select>
-                        </div>
+                        </div> -->
 
                         <form id="suggest_url" style="display: flex; justify-content: center;">
+                            <input type="text" class="form-control-sm" placeholder="Friend's Name" name="friend_name"
+                                id="friend_name" style="width: 7%; margin-right: 2px" required>
                             <input type="text" class="form-control-sm" placeholder="Item URL" name="suggesting"
                                 id="suggesting" required>
                             <input type="submit" class="btn btn-warning" id="send_suggestion" value="Send Suggestion" />

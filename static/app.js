@@ -75,7 +75,7 @@ function add_members() {
   all_users = room.participants.each({ status: 'connected' }, (participant) => {
     console.log(participant.sid);
   });
-
+  print(all_users);
   all_users.forEach((participant) => {
     user = document.createElement("option");
     user.innerText = participant.sid;
@@ -460,23 +460,28 @@ function polling() {
   endPoll = document.getElementById("end_poll");
   poll_url = document.getElementById("polling").value;
   if (poll_url != "") {
-    chatInput.value = "Hey, let's start a poll on this: " + poll_url;
+    chatInput.value = "Poll started: " + poll_url;
     console.log("value added")
     conv.sendMessage(chatInput.value);
     console.log("before i die")
     chatInput.value = "";
+    document.getElementById("submit_url").reset();
+
   }
 }
 
 function suggestion() {
   event.preventDefault();
   suggest_url = document.getElementById("suggesting").value;
-  if (suggest_url != "") {
-    chatInput.value = "I would suggest this item: " + suggest_url;
+  user_name = document.getElementById("friend_name").value;
+  if (suggest_url != "" && user_name != "") {
+    chatInput.value = "@" + user_name + " try this: " + suggest_url;
     console.log("value added")
     conv.sendMessage(chatInput.value);
     console.log("before i die")
     chatInput.value = "";
+    document.getElementById("suggest_url").reset();
+
   }
 }
 
