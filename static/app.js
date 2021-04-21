@@ -460,7 +460,7 @@ function polling() {
   endPoll = document.getElementById("end_poll");
   poll_url = document.getElementById("polling").value;
   if (poll_url != "") {
-    chatInput.value = "Poll started: " + poll_url;
+    chatInput.value = "Let's poll: " + poll_url;
     console.log("value added")
     conv.sendMessage(chatInput.value);
     console.log("before i die")

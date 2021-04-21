@@ -120,8 +120,10 @@ def poll():
 
     votes.pop('End Poll')
     print(check)
-    if(check == "End Poll"):
-        return render_template('results.html', data=poll_data, votes=votes)
+    # if(check == "End Poll"):
+    #     return render_template('results.html', data=poll_data, votes=votes)
+    return render_template('results.html', data=poll_data, votes=votes)
+    
     # else:
     #     return flask.jsonify({'a':'b'})
 
