@@ -470,6 +470,25 @@ function polling() {
   }
 }
 
+// $(document).ready(function() {
+// $(function () {
+//   // $("form").validate();
+//   $('form').on('submit', function(event) {
+//     event.preventDefault();
+
+//     $.ajax({
+//       // data: {
+//       //   choice: $('#poll_choices').val(),
+//       // },
+//       type: 'POST',
+//       url: '/poll'
+//     })
+//     .done(function(data) {
+
+//     });
+//   });
+// });
+
 function suggestion() {
   event.preventDefault();
   suggest_url = document.getElementById("suggesting").value;

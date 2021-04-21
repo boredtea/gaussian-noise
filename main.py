@@ -55,16 +55,14 @@ def login():
     return {'token': token.to_jwt().decode(),
             'conversation_sid': conversation.sid}
 
+filename = 'poll.txt'
 
 @app.route('/addRoom', methods=['POST'])
 def add_room():
     print("data ",request.data)
     global room_name
     room_name = json.loads(request.data.decode('utf-8'))["content"]
-    # room_name = json.loads(request.data)["content"]
     print(room_name)
-    #return flask.redirect(url_for('index'))
-    #return flask.redirect(url_for('login'))
     return flask.jsonify({'a':'b'})
 
 @app.route('/')
@@ -81,6 +79,8 @@ def lounge():
 
 @app.route('/party')
 def party():
+    f = open(filename, 'w')
+    f.close()
     return render_template('party.html', data=poll_data, room=room_name)
 
 # polling stuff
@@ -91,7 +91,6 @@ poll_data = {
 
 votes = {}
 
-filename = 'poll.txt'
 @app.route('/poll')
 def poll():
     vote = request.args.get('field')
@@ -120,26 +119,14 @@ def poll():
 
     votes.pop('End Poll')
     print(check)
+    return render_template('results.html', data=poll_data, votes=votes)
+
     # if(check == "End Poll"):
     #     return render_template('results.html', data=poll_data, votes=votes)
-    return render_template('results.html', data=poll_data, votes=votes)
-    
     # else:
-    #     return flask.jsonify({'a':'b'})
+    #     return "OK"
 
-    # return choices()
 
-# @app.route('/endPoll', methods=['POST'])
-# def endPoll():
-#     print("data ",request.data)
-#     global current_url
-#     current_url = json.loads(request.data)["content"]
-#     # clear the file
-#     f = open(filename, 'w')
-#     f.close()
-#     finalVotes = votes.copy()
-#     votes.clear()
-#     return render_template('finalResults.html', data=poll_data, votes=finalVotes, pollURL=current_url)
 
 # if __name__ == '__main__':
 #     app.run(host='0.0.0.0')

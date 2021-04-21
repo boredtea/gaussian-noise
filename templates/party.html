@@ -73,14 +73,17 @@
                         <input type="submit" class="btn btn-warning" id="start_poll" value="Start Poll" />
                     </form>
 
-                    <form action="/poll" id="choices" target="_blank">
-                        <h5 style="display: none; justify-content: center;">Yay or Nay?</h5>
-                        <div id="poll_choices" style="display: flex; justify-content: center;">
-                            {% for e in data.fields %}
-                            <input type="submit" class="btn btn-secondary mx-1" name="field" value="{{ e }}">
-                            {% endfor %}
-                        </div>
-                    </form>
+                    <div id="choice_form">
+                        <form action="/poll" id="choices" target="_blank">
+                            <!-- <form action="/poll" id="choices"> -->
+                            <h5 style="display: none; justify-content: center;">Yay or Nay?</h5>
+                            <div id="poll_choices" style="display: flex; justify-content: center;">
+                                {% for e in data.fields %}
+                                <input type="submit" class="btn btn-secondary mx-1" name="field" id="{{ e }}" value="{{ e }}">
+                                {% endfor %}
+                            </div>
+                        </form>
+                    </div>
 
                     <div id="suggestion_section" style="margin-top: 2%">
                         <!-- <div class="form-group" style="display: flex; justify-content: center;">
@@ -127,9 +130,10 @@
                 "https://www.myntra.com", "_blank");
         }
     </script>
+    <script src="../static/js/jquery-3.5.1.min.js"></script>
 
-        
 
-</body>
+
+    </body>
 
 </html>
