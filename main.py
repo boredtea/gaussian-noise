@@ -79,8 +79,8 @@ def lounge():
 
 @app.route('/party/<roomname>')
 def party(roomname):
-    # room = request.args.get('roomname', default = "", type = str)
-    return render_template('party.html', data=poll_data, room=room_name)
+    room = request.args.get('roomname', default = "", type = str)
+    return render_template('party.html', data=poll_data, room=roomname)
 
 # polling stuff
 poll_data = {
