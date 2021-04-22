@@ -128,7 +128,7 @@ h1 {
   padding-top: 25%;
 }
 
-#poll_here {
+#poll_here, #suggest_here {
   margin-top: 2%;
   /* margin-left: 42%; */
   display: flex;
