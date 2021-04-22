@@ -39,9 +39,9 @@
       })
         //  console.log('hi')
         .then((res) => res.json())
-        .then((data) => {
+        .then(() => {
           console.log(data);
-          window.location.pathname = '/party'
+          window.location.pathname = `/party/${data}`
         })
         .catch((err) => {
           console.log(err);

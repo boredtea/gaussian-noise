@@ -77,10 +77,9 @@ def choose():
 def lounge():
     return render_template('lounge.html')
 
-@app.route('/party')
-def party():
-    # f = open(filename, 'w')
-    # f.close()
+@app.route('/party/<roomname>')
+def party(roomname):
+    # room = request.args.get('roomname', default = "", type = str)
     return render_template('party.html', data=poll_data, room=room_name)
 
 # polling stuff
