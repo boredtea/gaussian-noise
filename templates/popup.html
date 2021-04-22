@@ -44,9 +44,36 @@
             style="color: black; font-weight: 600;">Let's Shop!</button>
     </div>
 
+    <div id="addnew" style="display: flex; justify-content: center;">
+        <input type="text" id="content" class="form-control-lg" placeholder="Enter Room Name" style="margin: 2px" />
+        <input type="button" value="Go to Room" id="submit" class="btn btn-warning" />
+    </div>
+
     <script src="popup.js" charset="utf-8"></script>
     <script src="../static/js/jquery-3.5.1.min.js"></script>
     <script src="../static/js/bootstrap.min.js"></script>
+    <!-- <script>
+        var submit = document.getElementById("submit");
+        submit.onclick = function () {
+          var data = document.getElementById("content").value;
+          fetch("/addRoom", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ content: data }),
+          })
+            //  console.log('hi')
+            .then((res) => res.json())
+            .then((data) => {
+              console.log(data);
+              window.location.pathname = '/party'
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        };
+      </script> -->
 </body>
 
 </html>
