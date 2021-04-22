@@ -17,7 +17,7 @@ const chatScroll = document.getElementById("chat-scroll");
 const chatContent = document.getElementById("chat-content");
 const chatInput = document.getElementById("chat-input");
 const suggest = document.getElementById("send_suggestion");
-const suggestPill = document.getElementById("v-pills-suggest");
+const suggestEvent = document.getElementById("select_user");
 let connected = false;
 let room;
 let chat;
@@ -473,21 +473,20 @@ function polling() {
 function add_members() {
   event.preventDefault();
   console.log("hellloooooo");
-  // all_users = room.participants.each({ status: 'connected' }, (participant) => {
-  //   console.log(participant.sid);
-  // });
   all_users = room.participants;
-  // print(all_users);
   userList = document.getElementById("select_user")
+  console.log(userList.childNodes);
+  current_list = [];
+  userList.childNodes.forEach((user) => {
+    current_list.push(user.innerText);
+  })
+  console.log(current_list);
   all_users.forEach((participant) => {
     user = document.createElement("option");
     user.innerText = participant.identity;
-    if (userList.childNodes.forEach((element) => {
-      element.get
-    })) {
+    if (!current_list.includes(user.innerText)) {
       userList.appendChild(user);
     }
-    // userList.appendChild(user);
   })
 }
 
@@ -503,8 +502,8 @@ function suggestion() {
     console.log("before i die")
     chatInput.value = "";
     document.getElementById("suggest_url").reset();
-    [...document.getElementById("select_user").childNodes].forEach(el => el.remove());
   }
+  [...document.getElementById("select_user").childNodes].forEach(el => el.remove());
 }
 
 function wishlist() {
@@ -535,6 +534,6 @@ unmuteAudio.addEventListener("click", audioHandler);
 showVideo.addEventListener("click", videoHandler);
 chatInput.addEventListener("keyup", onChatInputKey);
 pollURL.addEventListener("click", polling);
-suggestPill.addEventListener("click", add_members);
+suggestEvent.addEventListener("click", add_members);
 suggest.addEventListener("click", suggestion);
 wishlistURL.addEventListener("click", wishlist);

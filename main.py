@@ -79,8 +79,8 @@ def lounge():
 
 @app.route('/party')
 def party():
-    f = open(filename, 'w')
-    f.close()
+    # f = open(filename, 'w')
+    # f.close()
     return render_template('party.html', data=poll_data, room=room_name)
 
 # polling stuff
