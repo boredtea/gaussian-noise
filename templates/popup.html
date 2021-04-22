@@ -39,17 +39,16 @@
         This extension serves as a medium for collaborative shoping
     </div>
 
-    <div class="text-center" style="padding-top: 5px;">
-        <button title="Click to open chat!" type="button" class="btn btn-warning"
-            style="color: black; font-weight: 600;">Let's Shop!</button>
-    </div>
-
-    <div id="addnew" style="display: flex; justify-content: center;">
+    <div id="addnew" class="text-center" style="padding-top: 5px;">
+        <!-- <button title="Click to open chat!" type="button" class="btn btn-warning"
+            style="color: black; font-weight: 600;">Let's Shop!</button> -->
         <input type="text" id="content" class="form-control-lg" placeholder="Enter Room Name" style="margin: 2px" />
         <input type="button" value="Go to Room" id="submit" class="btn btn-warning" />
     </div>
 
-    <script src="popup.js" charset="utf-8"></script>
+    <script src="../static/popup.js" charset="utf-8"></script>
+    <!-- <script src="{{ url_for('static', filename='popup.js') }}"></script> -->
+    <!-- <script src="popup.js" charset="utf-8"></script> -->
     <script src="../static/js/jquery-3.5.1.min.js"></script>
     <script src="../static/js/bootstrap.min.js"></script>
     <!-- <script>
