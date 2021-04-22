@@ -7,6 +7,7 @@ const toggleMode = document.getElementById("toggle_mode");
 const unmuteAudio = document.getElementById("unmute_audio");
 const showVideo = document.getElementById("show_video");
 const pollDiv = document.getElementById("poll_here");
+const suggestDiv = document.getElementById("suggest_here");
 const pollURL = document.getElementById("start_poll");
 const wishlistDiv = document.getElementById("wishlist_section");
 const wishlistURL = document.getElementById("add_wishlist");
@@ -16,7 +17,7 @@ const chatScroll = document.getElementById("chat-scroll");
 const chatContent = document.getElementById("chat-content");
 const chatInput = document.getElementById("chat-input");
 const suggest = document.getElementById("send_suggestion");
-const suggestPill = document.getElementById("v-pills-poll");
+const suggestPill = document.getElementById("v-pills-suggest");
 let connected = false;
 let room;
 let chat;
@@ -145,6 +146,7 @@ function connect(username) {
           publication.track.disable();
         });
         pollDiv.style.display = "block";
+        suggestDiv.style.display = "block";
         wishlistDiv.style.display = "block";
 
         updateParticipantCount();
@@ -238,6 +240,7 @@ function disconnect() {
   toggleChat.disabled = true;
   toggleMode.disabled = true;
   pollDiv.style.display = "none";
+  suggestDiv.style.display = "none";
   wishlistDiv.style.display = "none";
 
   connected = false;
