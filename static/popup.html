@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Collab-Shop-Extension</title>
-    <link rel="stylesheet" href="..css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}" />
     <style>
         body {
@@ -31,17 +31,17 @@
 
 <body>
     <div
-        style="background-color: #FF9999; padding: 10px 10px 2px 10px; margin-bottom: 5px; margin-left: 10px; margin-right: 10px; border-radius: 8px;">
-        <h3 class="text-center text-nowrap">Collaborative Shopping</h3>
+        style="background-color: rgb(196, 241, 241); padding: 10px 10px 2px 10px; margin-bottom: 5px; margin-left: 10px; margin-right: 10px; border-radius: 8px;">
+        <h4 class="text-center text-nowrap">Collaborative Shopping</h4>
     </div>
 
     <div>
-        This extension serves as a medium for collaborative shoping.
+        Shop with your friends without constantly having to shift tabs!
     </div>
 
     <div id="addnew" class="text-center" style="padding-top: 5px;">
-        <input type="text" id="content" class="form-control-lg" placeholder="Enter Room Name" style="margin: 2px" />
-        <input type="button" value="Go to Room" id="submit" class="btn btn-warning" />
+        <input type="text" id="content" class="form-control-sm" placeholder="Enter Room Name" style="margin: 2px" />
+        <input type="button" value="Go to Room" id="submit" class="btn btn-warning btn-sm" />
     </div>
 
     <!-- <script src="../static/popup.js" charset="utf-8"></script> -->
