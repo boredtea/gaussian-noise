@@ -5,8 +5,9 @@
     <title>Collaborative Shopping</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../static/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="../static/css/index.css" type="text/css">
     <style>
-        body {
+        /* body {
             font-family: Arial;
             color: white;
         }
@@ -42,13 +43,13 @@
         .centered img {
             width: 150px;
             border-radius: 50%;
-        }
+        } */
     </style>
 </head>
 
 <body>
 
-    <div class="split left">
+    <!-- <div class="split left">
         <div class="centered">
             <a href="lounge" class="btn btn-warning">Public Lounges</a>
         </div>
@@ -58,6 +59,69 @@
         <div class="centered">
             <a href="choose" class="btn btn-warning">Private Parties</a>
         </div>
+    </div> -->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <img src="http://placehold.it/1200x500/3498db/2980b9" alt="First slide">
+                            <div class="carousel-caption">
+                                <h3>
+                                    First slide</h3>
+                                <p>
+                                    Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="http://placehold.it/1200x500/9b59b6/8e44ad" alt="Second slide">
+                            <div class="carousel-caption">
+                                <h3>
+                                    Second slide</h3>
+                                <p>
+                                    Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="http://placehold.it/1200x500/34495e/2c3e50" alt="Third slide">
+                            <div class="carousel-caption">
+                                <h3>
+                                    Third slide</h3>
+                                <p>
+                                    Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span></a><a class="right carousel-control"
+                            href="#carousel-example-generic" data-slide="next"><span class="glyphicon glyphicon-chevron-right">
+                            </span></a>
+                </div>
+                <div class="main-text hidden-xs">
+                    <div class="col-md-12 text-center">
+                        <h1>Welcome to Gaussian Noise CollabShop</h1>
+                        <h3>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        </h3>
+                        <div class="">
+                            <a href="lounge" class="btn btn-warning">Public Lounges</a>
+                            <a href="choose" class="btn btn-warning">Private Parties</a>
+                            <!-- <a class="btn btn-clear btn-sm btn-min-block" href="http://www.jquery2dotnet.com/">Login</a><a class="btn btn-clear btn-sm btn-min-block"
+                                href="http://www.jquery2dotnet.com/">Registration</a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="push">
     </div>
 
     <script src="../static/js/jquery-3.5.1.min.js"></script>
