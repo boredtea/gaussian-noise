@@ -149,6 +149,6 @@ h1 {
 
 @media (max-width: 480px) {
   .start_party {
-    display: none !important;
+    display: none;
   }
 }
