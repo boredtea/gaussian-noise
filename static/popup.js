@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 tabId: tabs[0].id,
                 type: 'popup',
                 focused: true,
-                url: room_url
+                url: room_url,
             });
             chrome.tabs.sendMessage(tabs[0].id, msg)
         })
