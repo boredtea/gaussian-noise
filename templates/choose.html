@@ -18,36 +18,36 @@
     <br>
     <br>
 
-    <div id="addnew" style="display: flex; justify-content: center;">
-      <input type="text" id="content" class="form-control-lg" placeholder="Enter Room Name" style="margin: 2px"/>
-      <input type="button" value="Go to Room" id="submit" class="btn btn-warning"/>
-    </div>
+    <form action="/party" style="display: flex; justify-content: center;">
+      <input type="text" id="content" class="form-control-lg" placeholder="Enter Room Name" name="roomname" style="margin: 2px"/>
+      <input type="submit" value="Go to Room" id="submit" class="btn btn-warning"/>
+    </form>
   </div>
 
   <script src="../static/js/jquery-3.5.1.min.js"></script>
   <script src="../static/js/bootstrap.min.js"></script>
-  <script>
+  <!-- <script>
     var submit = document.getElementById("submit");
     submit.onclick = function () {
       var data = document.getElementById("content").value;
-      fetch("/addRoom", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ content: data }),
-      })
-        //  console.log('hi')
-        .then((res) => res.json())
-        .then(() => {
-          console.log(data);
-          window.location.pathname = `/party/${data}`
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      // fetch("/party", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify({ content: data }),
+      // })
+      //   //  console.log('hi')
+      //   .then((res) => res.json())
+      //   .then(() => {
+      //     console.log(data);
+      //     window.location.pathname = `/party/${data}`
+      //   })
+      //   .catch((err) => {
+      //     console.log(err);
+      //   });
     };
-  </script>
+  </script> -->
 </body>
 
 </html>

@@ -77,10 +77,15 @@ def choose():
 def lounge():
     return render_template('lounge.html')
 
-@app.route('/party/<roomname>')
-def party(roomname):
-    room = request.args.get('roomname', default = "", type = str)
-    return render_template('party.html', data=poll_data, room=roomname)
+@app.route('/party')
+def party():
+    global room_name
+    print("Room name: ", room_name)
+    # room_name = json.loads(request.data.decode('utf-8'))["content"]
+    room_name = request.args.get('roomname')
+    return render_template('party.html', data=poll_data, room=room_name)
+    # return flask.jsonify({'a':'b'})
+
 
 # polling stuff
 poll_data = {

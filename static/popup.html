@@ -39,10 +39,16 @@
         Shop with your friends without constantly having to shift tabs!
     </div>
 
-    <div id="addnew" class="text-center" style="padding-top: 5px;">
+    <!-- <div id="addnew" class="text-center" style="padding-top: 5px;">
         <input type="text" id="content" class="form-control-sm" placeholder="Enter Room Name" style="margin: 2px" />
         <input type="button" value="Go to Room" id="submit" class="btn btn-warning btn-sm" />
-    </div>
+    </div> -->
+
+    <form action="/party" style="display: flex; justify-content: center;">
+        <input type="text" id="content" class="form-control-lg" placeholder="Enter Room Name" name="roomname"
+            style="margin: 2px" />
+        <input type="submit" value="Go to Room" id="submit" class="btn btn-warning" />
+    </form>
 
     <!-- <script src="../static/popup.js" charset="utf-8"></script> -->
     <!-- <script src="{{ url_for('templates', filename='popup.js') }}"></script> -->
