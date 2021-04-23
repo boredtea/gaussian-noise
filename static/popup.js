@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function onclick() {
         var data = document.getElementById("content").value;
-        var room_url = "https://gaussian-noise.herokuapp.com/party/" + data;
+        var room_url = "https://gaussian-noise.herokuapp.com/party?roomname=" + data;
         chrome.tabs.query({ currentWindow: true, active: true }, function(tabs) {
             let msg = {
                 txt: "start"
