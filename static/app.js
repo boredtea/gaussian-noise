@@ -146,9 +146,6 @@ function connect(username) {
         room.localParticipant.audioTracks.forEach((publication) => {
           publication.track.disable();
         });
-        pollDiv.style.display = "block";
-        suggestDiv.style.display = "block";
-        wishlistDiv.style.display = "block";
 
         updateParticipantCount();
         connectChat(data.token, data.conversation_sid);
@@ -156,10 +153,35 @@ function connect(username) {
         chatScroll.scrollTop = chatScroll.scrollHeight;
         document.getElementById("chat").style.visibility = "visible";
         usernameInput.style.display = "none";
-        document.getElementsByClassName("start_party")[0].style.display =
-          "flex";
-        document.getElementsByClassName("start_party")[1].style.display =
-          "block";
+        // pollDiv.style.display = "block";
+        // suggestDiv.style.display = "block";
+        // wishlistDiv.style.display = "block";
+        // document.getElementsByClassName("start_party")[0].style.display =
+        //   "flex";
+        // document.getElementsByClassName("start_party")[1].style.display =
+        //   "block";
+
+        function showOnlyChat() {
+          console.log(window.screen.width);
+          if (window.screen.width <= 480) { // If media query matches
+            [...document.getElementsByClassName("control_buttons")].forEach((element) => {
+              element.style.display = "none";
+            })
+            document.getElementById("v-pills-tab").style.display = "none";
+
+          } else {
+            document.getElementById("v-pills-tab").style.display = "block";
+            pollDiv.style.display = "block";
+            suggestDiv.style.display = "block";
+            wishlistDiv.style.display = "block";
+            document.getElementsByClassName("start_party")[0].style.display =
+              "flex";
+            document.getElementsByClassName("start_party")[1].style.display =
+              "block";
+          }
+        }
+        showOnlyChat() // Call listener function at run time
+        window.addEventListener("resize", showOnlyChat) // Attach listener function on state changes
         mutePage();
         resolve();
       })
@@ -535,13 +557,13 @@ function download_csv_file() {
   console.log("I want to download")
   console.log(csv)
   var hiddenElement = document.createElement('a');
-    hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
-    console.log(hiddenElement.href)
-    hiddenElement.target = '_blank';
-    
-    //provide the name for the CSV file to be downloaded
-    hiddenElement.download = 'wishlist.csv';
-    hiddenElement.click();
+  hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
+  console.log(hiddenElement.href)
+  hiddenElement.target = '_blank';
+
+  //provide the name for the CSV file to be downloaded
+  hiddenElement.download = 'wishlist.csv';
+  hiddenElement.click();
 }
 
 addLocalVideo();

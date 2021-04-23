@@ -150,6 +150,7 @@ a {
 
 .table {
   background-image: url(../images/table-transparent.png);
+  background-position: 50% 25px;
 }
 
 .cc-selector-2 input:active + .drinkcard-cc,
@@ -170,7 +171,7 @@ a {
   background-repeat: no-repeat;
   display: inline-block;
   width: 100px;
-  height: 70px;
+  height: 120px;
   -webkit-transition: all 100ms ease-in;
   -moz-transition: all 100ms ease-in;
   transition: all 100ms ease-in;
