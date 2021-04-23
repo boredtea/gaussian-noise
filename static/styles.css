@@ -190,6 +190,11 @@ h1 {
     overflow: hidden;
   }
 
+  #chat-content {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+
+  }
   #root.withChat #chat {
     width: 100vw;
     display: grid;
