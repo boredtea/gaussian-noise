@@ -7,8 +7,10 @@
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}" />
   <style>
     body {
-      background-color: #ecd8dd;
-    }
+            background: url(static/images/imagepriv.png) no-repeat center fixed;     
+            background-size: cover;
+            color: white;
+        }
   </style>
 </head>
 
@@ -20,7 +22,8 @@
 
     <form action="/party" style="display: flex; justify-content: center;">
       <input type="text" id="content" class="form-control-lg" placeholder="Enter Room Name" name="roomname" style="margin: 2px"/>
-      <input type="submit" value="Go to Room" id="submit" class="btn btn-warning"/>
+      <span style="margin: 2%;"></span>
+      <input type="submit" value="Go to Room" id="submit" class="btn btn-outline-light"/>
     </form>
   </div>
 
