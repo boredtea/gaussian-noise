@@ -83,6 +83,8 @@
                 submit.disabled = false
             }
 
+            console.log(data)
+
             // var data = document.getElementById("content").value;
             fetch("/addRoom", {
                 method: "POST",
@@ -91,11 +93,13 @@
                 },
                 body: JSON.stringify({ content: data }),
             })
+
                 //  console.log('hi')
+
                 .then((res) => res.json())
-                .then((data) => {
+                .then(() => {
                     console.log(data);
-                    window.location.pathname = '/party'
+                    window.location.pathname = `/party/${data}`
                 })
                 .catch((err) => {
                     console.log(err);
