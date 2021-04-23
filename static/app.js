@@ -157,18 +157,19 @@ function connect(username) {
         function showOnlyChat() {
           console.log(window.screen.width);
           if (window.screen.width <= 1921) { // If media query matches
+            HTMLFormControlsCollection.log("bello");
             [...document.getElementsByClassName("control_buttons")].forEach((element) => {
               element.style.display = "none";
             })
             document.getElementById("v-pills-tab").style.display = "none";
-            // document.getElementById("chat-scroll").classList.add("extensionView-chat-scroll");
-            // document.getElementById("chat").classList.add("extensionView-chat");
-            // document.body.classList.add(extensionView-body);
-            // document.getElementById("chat-content").classList.add("extensionView-chat-content");
-            // document.getElementById("chat-input").classList.add("extensionView-chat-input");
-            // document.getElementById("root").classList.add("extensionView-root");
-            // document.getElementById("withChat").classList.add("extensionView-withChat");
-            // document.getElementById("chat").classList.add("extensionView-chat");
+            document.getElementById("chat-scroll").classList.add("extensionView-chat-scroll");
+            document.getElementById("chat").classList.add("extensionView-chat");
+            document.body.classList.add(extensionView-body);
+            document.getElementById("chat-content").classList.add("extensionView-chat-content");
+            document.getElementById("chat-input").classList.add("extensionView-chat-input");
+            document.getElementById("root").classList.add("extensionView-root");
+            document.getElementById("withChat").classList.add("extensionView-withChat");
+            document.getElementById("chat").classList.add("extensionView-chat");
           } else {
             document.getElementById("v-pills-tab").style.display = "block";
             pollDiv.style.display = "block";
@@ -179,14 +180,14 @@ function connect(username) {
             document.getElementsByClassName("start_party")[1].style.display =
               "block";
 
-              // document.getElementById("chat-scroll").classList.remove("extensionView-chat-scroll");
-              // document.getElementById("chat").classList.remove("extensionView-chat");
-              // document.body.classList.remove(extensionView-body);
-              // document.getElementById("chat-content").classList.remove("extensionView-chat-content");
-              // document.getElementById("chat-input").classList.remove("extensionView-chat-input");
-              // document.getElementById("root").classList.remove("extensionView-root");
-              // document.getElementById("withChat").classList.remove("extensionView-withChat");
-              // document.getElementById("chat").classList.remove("extensionView-chat");
+              document.getElementById("chat-scroll").classList.remove("extensionView-chat-scroll");
+              document.getElementById("chat").classList.remove("extensionView-chat");
+              document.body.classList.remove(extensionView-body);
+              document.getElementById("chat-content").classList.remove("extensionView-chat-content");
+              document.getElementById("chat-input").classList.remove("extensionView-chat-input");
+              document.getElementById("root").classList.remove("extensionView-root");
+              document.getElementById("withChat").classList.remove("extensionView-withChat");
+              document.getElementById("chat").classList.remove("extensionView-chat");
           }
         }
         showOnlyChat() // Call listener function at run time
