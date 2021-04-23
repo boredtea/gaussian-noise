@@ -84,7 +84,7 @@ The following are the instructions to be followed while setting up the applicati
    ```
 3. Go to the required directory
    ```sh
-   cd gaussian-noise\twilio
+   cd gaussian-noise
    ```
 3. The application includes a file named .env.template which includes the three configuration variables needed. These are the private values of API. Ideally, the .env shouldn't be public, but for the purpose of the hackathon, we've pushed the .env file as well.
 4. Create and start a Python virtual environment
@@ -99,7 +99,16 @@ The following are the instructions to be followed while setting up the applicati
    python wsgi.py
    ```
    The application is now running on [http://localhost:5000/](http://localhost:5000/). Head over to localhost:5000 in your machine.
-6. Alternatively, the application has been deployed on [Heroku](https://gaussian-noise.herokuapp.com/)
+6. Alternatively, the application has been deployed on [Heroku](https://gaussian-noise.herokuapp.com/).
+
+## Setting up the Chrome Extension
+
+Follow these steps to set up the chrome extension for this application:
+1. Go to [chrome://extensions/](chrome://extensions/) and switch on the Developer Mode.
+
+2. Click on **load unpacked**, and upload the **static** folder from the repo.
+
+3. And that's it! The extension should now appear along with your other chrome extensions on Chrome.
 
 
 
