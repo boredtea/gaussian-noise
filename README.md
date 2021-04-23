@@ -58,22 +58,20 @@ The following are the instructions to be followed while setting up the applicati
    ```sh
    cd gaussian-noise\twilio
    ```
-3. The application includes a file named .env.template which includes the three configuration variables needed. These are the private values of API. Make a copy of this file with the name .env (dot env) and edit it as follows:
-    ```sh
-    TWILIO_ACCOUNT_SID="AC18dcf40a5fc132449929e5e006e730a5"
-    TWILIO_API_KEY_SID="SKc4256ea7429486bb5231eed6ddebc808"
-    TWILIO_API_KEY_SECRET="9DgZ43zP6QxnOec2CMtguPy1QDYpBbTT"
-    ```
+3. The application includes a file named .env.template which includes the three configuration variables needed. These are the private values of API. Ideally, the .env shouldn't be public, but for the purpose of the hackathon, we've pushed the .env file as well.
 4. Create and start a Python virtual environment
    ```sh
    python -m venv venv
    venv\Scripts\activate (for windows)
+   source venv\bin\activate (for linux)
+
    ```
 5. Run the application using flask
    ```sh
-   flask run
+   python wsgi.py
    ```
    The application is now running on [http://localhost:5000/](http://localhost:5000/). Head over to localhost:5000 in your machine.
+6. Alternatively, the application has been deployed on [Heroku](https://gaussian-noise.herokuapp.com/)
 
 
 
