@@ -58,10 +58,13 @@ Features than enable online interaction with co-shoppers
 The above features have been enable via a chrome extension for easier access while browsing on Myntra as well. 
 
 <br/><br/>
-Members of the team:
+
+### Members of the team:
 * [Mansi Nanavati](https://github.com/glitched-shadeslayer)
 * [Nandita LT](https://github.com/Nanditalt07)
 * [Soumi Chakraborty](https://github.com/boredtea)
+
+<br/><br/>
 
 ## Built With
 
@@ -71,6 +74,8 @@ The major frameworks that are used to build this project are:
 * HTML, CSS, [Bootstrap](https://getbootstrap.com) - The frontend is built using HTML, CSS and CSS by Bootstrap.
 * [Flask](https://flask.palletsprojects.com/en/1.1.x/) - It is used to run the app in python.
 
+<br/>
+<br/>
 
 
 <!-- GETTING STARTED -->
