@@ -1,10 +1,16 @@
-.main-text {
-    position: absolute;
-    top: 50px;
-    width: 96.66666666666666%;
-    color: #FFF;
+.carousel {
+  background:#007aeb;
 }
 
+
+.carousel-item .img-fluid {
+  height:100vh;
+}
+
+.carousel-item a {
+  display: block;
+  width:100%;
+}
 #one {
     background-image:url(../images/myntra.jpg);
 }
