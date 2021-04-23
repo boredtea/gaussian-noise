@@ -11,6 +11,7 @@ const suggestDiv = document.getElementById("suggest_here");
 const pollURL = document.getElementById("start_poll");
 const wishlistDiv = document.getElementById("wishlist_section");
 const wishlistURL = document.getElementById("add_wishlist");
+const downloadCSV = document.getElementById("downloadCSV");
 const container = document.getElementById("container");
 const count = document.getElementById("count");
 const chatScroll = document.getElementById("chat-scroll");
@@ -506,6 +507,8 @@ function suggestion() {
   [...document.getElementById("select_user").childNodes].forEach(el => el.remove());
 }
 
+var csv = ''
+
 function wishlist() {
   event.preventDefault();
   wishlist_url = document.getElementById("wishlist").value;
@@ -520,9 +523,25 @@ function wishlist() {
       wishlist_url +
       "</a>&nbsp;";
 
+    csv = csv + wishlist_url + "\n"
+    console.log(csv)
+
     newItem.appendChild(wishlistItem);
     document.getElementById("wishlist_link").reset();
   }
+}
+
+function download_csv_file() {
+  console.log("I want to download")
+  console.log(csv)
+  var hiddenElement = document.createElement('a');
+    hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
+    console.log(hiddenElement.href)
+    hiddenElement.target = '_blank';
+    
+    //provide the name for the CSV file to be downloaded
+    hiddenElement.download = 'wishlist.csv';
+    hiddenElement.click();
 }
 
 addLocalVideo();
@@ -537,3 +556,4 @@ pollURL.addEventListener("click", polling);
 suggestEvent.addEventListener("click", add_members);
 suggest.addEventListener("click", suggestion);
 wishlistURL.addEventListener("click", wishlist);
+downloadCSV.addEventListener("click", download_csv_file)

@@ -79,9 +79,13 @@ def lounge():
 
 @app.route('/party')
 def party():
-    f = open(filename, 'w')
-    f.close()
+    global room_name
+    print("Room name: ", room_name)
+    # room_name = json.loads(request.data.decode('utf-8'))["content"]
+    room_name = request.args.get('roomname')
     return render_template('party.html', data=poll_data, room=room_name)
+    # return flask.jsonify({'a':'b'})
+
 
 # polling stuff
 poll_data = {
