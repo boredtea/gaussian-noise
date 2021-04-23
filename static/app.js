@@ -153,13 +153,6 @@ function connect(username) {
         chatScroll.scrollTop = chatScroll.scrollHeight;
         document.getElementById("chat").style.visibility = "visible";
         usernameInput.style.display = "none";
-        // pollDiv.style.display = "block";
-        // suggestDiv.style.display = "block";
-        // wishlistDiv.style.display = "block";
-        // document.getElementsByClassName("start_party")[0].style.display =
-        //   "flex";
-        // document.getElementsByClassName("start_party")[1].style.display =
-        //   "block";
 
         function showOnlyChat() {
           console.log(window.screen.width);
