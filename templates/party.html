@@ -69,9 +69,10 @@
             </div>
             <div class="tab-pane fade" id="v-pills-poll" role="tabpanel" aria-labelledby="v-pills-poll-tab">
                 <div id="poll_here" style="display: none;">
-                    <form id="submit_url" style="display: flex; justify-content: center;">
-                        <input type="text" class="form-control-sm" placeholder="Item URL" name="polling" id="polling"
-                            required>
+                    <form id="submit_url"
+                        style="display: flex; justify-content: center;">
+                        <input type="text" class="form-control" placeholder="Item URL" name="polling" id="polling"
+                            style="width: 25%; margin-right: 2px;" required>
                         <input type="submit" class="btn btn-warning" id="start_poll" value="Start Poll" />
                     </form>
 
@@ -79,7 +80,7 @@
                         <form action="/poll" id="choices" target="_blank">
                             <!-- <form action="/poll" id="choices"> -->
                             <h5 style="display: none; justify-content: center;">Yay or Nay?</h5>
-                            <div id="poll_choices" style="display: flex; justify-content: center;">
+                            <div id="poll_choices" style="display: flex; justify-content: center; margin-top: 6px;">
                                 {% for e in data.fields %}
                                 <input type="submit" class="btn btn-secondary mx-1" name="field" id="{{ e }}"
                                     value="{{ e }}">
@@ -94,11 +95,12 @@
 
                     <div id="suggestion_section" style="margin: 2%">
                         <form id="suggest_url" style="display: flex; justify-content: center;">
-                            <select id="select_user" class="form-control" aria-placeholder="Select User">
+                            <select id="select_user" class="form-control" aria-placeholder="Select User"
+                                style="text-align: center; width: 15%; margin-right: 2px;">
                                 <option>Select Friend</option>
                             </select>
-                            <input type="text" class="form-control-sm" placeholder="Item URL" name="suggesting"
-                                id="suggesting" required>
+                            <input type="text" class="form-control" placeholder="Item URL" name="suggesting"
+                                id="suggesting" style="width: 20%; margin-right: 2px;" required>
                             <input type="submit" class="btn btn-warning" id="send_suggestion" value="Send Suggestion" />
                         </form>
 
@@ -108,11 +110,13 @@
             <div class="tab-pane fade" id="v-pills-wishlist" role="tabpanel" aria-labelledby="v-pills-wishlist-tab">
                 <div id="wishlist_section" style="display: none;">
                     <form id="wishlist_link" style="display: flex; justify-content: center;">
-                        <input type="text" class="form-control-sm" placeholder="Wishlist URL" name="wishlist"
-                            id="wishlist" required>
+                        <input type="text" class="form-control" placeholder="Wishlist URL" name="wishlist" id="wishlist"
+                            style="width: 20%; margin-right: 2px;" required>
                         <input type="submit" class="btn btn-warning" id="add_wishlist" value="Add to Wishlist" />
                     </form>
-                    <button id="downloadCSV"> Download Wishlist </button>
+                    <div style="display: flex; justify-content: center; margin-top: 6px;">
+                        <button id="downloadCSV" class="btn btn-secondary"> Download Wishlist </button>
+                    </div>
                     <ul id="wishlist_url"></ul>
                 </div>
             </div>
