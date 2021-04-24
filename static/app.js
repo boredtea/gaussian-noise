@@ -156,7 +156,7 @@ function connect(username) {
 
         function showOnlyChat() {
           console.log(window.screen.width);
-          if (window.screen.width <= 1921) { // If media query matches
+          if (window.screen.width <= 480) { // If media query matches
             HTMLFormControlsCollection.log("bello");
             [...document.getElementsByClassName("control_buttons")].forEach((element) => {
               element.style.display = "none";
