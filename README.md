@@ -122,9 +122,10 @@ Follow these steps to set up the chrome extension for this application:
 2. Rooms in public lounge<img src="images/lounge.png" alt="index"> 
 2. Enter username<img src="images/username.png" alt="index"> 
 2. Relaxed Mode<img src="images/relaxed.png" alt="index"> 
-2. Wishlist<img src="images/wishlist.png" alt="index"> 
-2. Save wishlist before leaving call<img src="images/save.png" alt="index"> 
+2. Downloadable wishlist<img src="images/wishlist.png" alt="index"> 
+2. Suggest items to fellow shoppers online<img src="images/suggest.png" alt="index"> 
 2. Live mode<img src="images/live.png" alt="index"> 
 2. Poll<img src="images/poll.png" alt="index"> 
 2. Poll results<img src="images/result.png" alt="index"> 
 2. Enter unique room name in private parties<img src="images/room.png" alt="index">
+2. Extension for easy access while shopping with friends<img src="images/extension1.png" alt="index">
