@@ -128,4 +128,5 @@ Follow these steps to set up the chrome extension for this application:
 2. Poll<img src="images/poll.png" alt="index"> 
 2. Poll results<img src="images/result.png" alt="index"> 
 2. Enter unique room name in private parties<img src="images/room.png" alt="index">
-2. Extension for easy access while shopping with friends<img src="images/extension1.png" alt="index">
+2. Extension for easy access while shopping with friends<img src="images/ext.jpeg" alt="index">
+2. Chatting via extension while browsing on the side<img src="images/extchat.jpeg" alt="index">
