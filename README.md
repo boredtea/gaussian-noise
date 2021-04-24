@@ -28,12 +28,43 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This is a solution to the problem statement of "Collaborative Shopping" by Myntra. We have built a platform that allows you to communicate with friends, family and co-shoppers as you browse the products in Myntra's site. The platform offers two modes: relaxed and real-time. In relaxed mode, you can chat with the members in your group, poll on items, and add products to wishlist. In the real-time mode, you have the option to switch on your audio, video (and the option to turn them off as well), screenshare the Myntra site via the "Share screen" option, and chat as well! 
+This is a solution to the problem statement of "Collaborative Shopping" by Myntra. We have built a platform that allows you to communicate with friends, family and co-shoppers as you browse the products in Myntra's site. The platform offers you the following features.
+
+Features: <br/>
+### Public Lounges
+Any shopper can join a public lounge (can be based on apperal) and find company while shopping.
+### Private Party 
+Only close friends having the unique Room ID can join the private party.
+<br/>
+<br/>
+
+### Relaxed Mode
+Features that do not need your presence for communication with co-shopperd
+
+* Chat
+* Poll on Item
+* Suggest Item to a fellow shopper
+* Make a Downloadable Wishlist 
+* Open Myntra Website
+
+### Real-Time Mode
+Features than enable online interaction with co-shoppers
+
+* (Show or Hide) Video
+* (Mute or Unmute) Audio
+* Screen-Share with a zoom in Feature on the screen
+
+### Chrome Extension
+The above features have been enable via a chrome extension for easier access while browsing on Myntra as well. 
+
 <br/><br/>
-Members of the team:
-* Mansi Nanavati
-* Nandita LT
-* Soumi Chakraborty
+
+### Members of the team:
+* [Mansi Nanavati](https://github.com/glitched-shadeslayer)
+* [Nandita LT](https://github.com/Nanditalt07)
+* [Soumi Chakraborty](https://github.com/boredtea)
+
+<br/><br/>
 
 ## Built With
 
@@ -43,6 +74,8 @@ The major frameworks that are used to build this project are:
 * HTML, CSS, [Bootstrap](https://getbootstrap.com) - The frontend is built using HTML, CSS and CSS by Bootstrap.
 * [Flask](https://flask.palletsprojects.com/en/1.1.x/) - It is used to run the app in python.
 
+<br/>
+<br/>
 
 
 <!-- GETTING STARTED -->
@@ -56,7 +89,7 @@ The following are the instructions to be followed while setting up the applicati
    ```
 3. Go to the required directory
    ```sh
-   cd gaussian-noise\twilio
+   cd gaussian-noise
    ```
 3. The application includes a file named .env.template which includes the three configuration variables needed. These are the private values of API. Ideally, the .env shouldn't be public, but for the purpose of the hackathon, we've pushed the .env file as well.
 4. Create and start a Python virtual environment
@@ -71,7 +104,16 @@ The following are the instructions to be followed while setting up the applicati
    python wsgi.py
    ```
    The application is now running on [http://localhost:5000/](http://localhost:5000/). Head over to localhost:5000 in your machine.
-6. Alternatively, the application has been deployed on [Heroku](https://gaussian-noise.herokuapp.com/)
+6. Alternatively, the application has been deployed on [Heroku](https://gaussian-noise.herokuapp.com/).
+
+## Setting up the Chrome Extension
+
+Follow these steps to set up the chrome extension for this application:
+1. Go to [chrome://extensions/](chrome://extensions/) and switch on the Developer Mode.
+
+2. Click on **load unpacked**, and upload the **static** folder from the repo.
+
+3. And that's it! The extension should now appear along with your other chrome extensions on Chrome.
 
 
 
