@@ -28,12 +28,43 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This is a solution to the problem statement of "Collaborative Shopping" by Myntra. We have built a platform that allows you to communicate with friends, family and co-shoppers as you browse the products in Myntra's site. The platform offers two modes: relaxed and real-time. In relaxed mode, you can chat with the members in your group, poll on items, and add products to wishlist. In the real-time mode, you have the option to switch on your audio, video (and the option to turn them off as well), screenshare the Myntra site via the "Share screen" option, and chat as well! 
+This is a solution to the problem statement of "Collaborative Shopping" by Myntra. We have built a platform that allows you to communicate with friends, family and co-shoppers as you browse the products in Myntra's site. The platform offers you the following features.
+
+Features: <br/>
+### Public Lounges
+Any shopper can join a public lounge (can be based on apperal) and find company while shopping.
+### Private Party 
+Only close friends having the unique Room ID can join the private party.
+<br/>
+<br/>
+
+### Relaxed Mode
+Features that do not need your presence for communication with co-shopperd
+
+* Chat
+* Poll on Item
+* Suggest Item to a fellow shopper
+* Make a Downloadable Wishlist 
+* Open Myntra Website
+
+### Real-Time Mode
+Features than enable online interaction with co-shoppers
+
+* (Show or Hide) Video
+* (Mute or Unmute) Audio
+* Screen-Share with a zoom in Feature on the screen
+
+### Chrome Extension
+The above features have been enable via a chrome extension for easier access while browsing on Myntra as well. 
+
 <br/><br/>
-Members of the team:
-* Mansi Nanavati
-* Nandita LT
-* Soumi Chakraborty
+
+### Members of the team:
+* [Mansi Nanavati](https://github.com/glitched-shadeslayer)
+* [Nandita LT](https://github.com/Nanditalt07)
+* [Soumi Chakraborty](https://github.com/boredtea)
+
+<br/><br/>
 
 ## Built With
 
@@ -43,6 +74,8 @@ The major frameworks that are used to build this project are:
 * HTML, CSS, [Bootstrap](https://getbootstrap.com) - The frontend is built using HTML, CSS and CSS by Bootstrap.
 * [Flask](https://flask.palletsprojects.com/en/1.1.x/) - It is used to run the app in python.
 
+<br/>
+<br/>
 
 
 <!-- GETTING STARTED -->
