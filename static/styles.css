@@ -204,7 +204,7 @@ h1 {
   width: 100%;
 } */
 
-@media (max-width: 1921px) {
+@media (max-width: 480px) {
   .start_party {
     display: none;
   }

@@ -157,11 +157,11 @@ function connect(username) {
         function showOnlyChat() {
           console.log(window.screen.width);
           if (window.screen.width <= 480) { // If media query matches
-            HTMLFormControlsCollection.log("bello");
             [...document.getElementsByClassName("control_buttons")].forEach((element) => {
               element.style.display = "none";
             })
-            // document.getElementById("v-pills-tab").style.display = "none";
+            document.getElementById("v-pills-tab").style.display = "none";
+
             // document.getElementById("chat-scroll").classList.add("extensionView-chat-scroll");
             // document.getElementById("chat").classList.add("extensionView-chat");
             // document.body.classList.add(extensionView-body);
