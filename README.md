@@ -85,4 +85,4 @@ The following are the instructions to be followed while setting up the applicati
 2. Live mode<img src="images/live.png" alt="index"> 
 2. Poll<img src="images/poll.png" alt="index"> 
 2. Poll results<img src="images/result.png" alt="index"> 
-2. Enter unique room name in private parties<img src="images/room.png" alt="index"> 
+2. Enter unique room name in private parties<img src="images/room.png" alt="index">
