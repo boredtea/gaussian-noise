@@ -85,6 +85,14 @@ def party():
     room_name = request.args.get('roomname')
     return render_template('party.html', data=poll_data, room=room_name)
 
+@app.route('/extensionparty')
+def extensionparty():
+    global room_name
+    print("Room name: ", room_name)
+    # room_name = json.loads(request.data.decode('utf-8'))["content"]
+    room_name = request.args.get('roomname')
+    return render_template('extensionparty.html', data=poll_data, room=room_name)
+
 
 # polling stuff
 poll_data = {

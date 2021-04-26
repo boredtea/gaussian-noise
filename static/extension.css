@@ -167,35 +167,34 @@ h1 {
     font-family: 'Helvetica';
 }
 
-@media (max-width: 480px) {
-    .start_party {
-        display: none;
-    }
-    #chat-scroll {
-        height: 90vh;
-        width: 100%;
-        left: 0;
-        overflow-x: hidden;
-    }
-    #chat {
-        margin: 0px;
-    }
-    body {
-        overflow: hidden;
-    }
-    #chat-content {
-        margin-bottom: 10px;
-        padding-bottom: 10px;
-    }
-    #root.withChat #chat {
-        width: 100vw;
-        display: grid;
-        background-color: #d3dff0;
-        overflow-y: hidden;
-    }
-    #chat-input {
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-    }
+
+.start_party {
+    display: none;
+}
+#chat-scroll {
+    height: 60vh;
+    width: 100%;
+    left: 0;
+    overflow-x: hidden;
+}
+#chat {
+    margin: 0px;
+}
+body {
+    overflow: hidden;
+}
+#chat-content {
+    margin-bottom: 10px;
+    /* padding-bottom: 10px; */
+}
+#root.withChat #chat {
+    width: 100vw;
+    display: grid;
+    background-color: #d3dff0;
+    overflow-y: hidden;
+}
+#chat-input {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
